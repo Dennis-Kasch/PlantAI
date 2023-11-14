@@ -5,7 +5,7 @@ This is the project plan for the PlantAI project for Systems and Software Engine
 ## Group Members
 
 * Abdel
-* Ayham
+* Ayham Ammar
 * Daniel Hahn
 * David
 * Dennis Kasch
