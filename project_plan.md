@@ -4,7 +4,7 @@ This is the project plan for the PlantAI project for Systems and Software Engine
 
 ## Group Members
 
-* Abdel
+* Abdelkhalek Kamkoum (6331906)
 * Ayham Ammar
 * Daniel Hahn
 * David
