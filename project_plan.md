@@ -10,6 +10,7 @@ This is the project plan for the PlantAI project for Systems and Software Engine
 * David Jordan
 * Dennis Kasch
 * Sarahe El Mimouni
+* Shivan Oskan
 
 ## Project Goals
 
