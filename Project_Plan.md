@@ -12,6 +12,9 @@ This is the project plan for the PlantAI project for Systems and Software Engine
 * Sarahe El Mimouni
 * Shivan Oskan
 
+Competences: web development, working with databases, java and python programming, basics of creating ML models
+Missing competences: implementing Android apps, creating computer vision models
+
 ## Project Goals
 
 The goal of this project is to develop an Android app (or Android integrated web app) that allows to take pictures of a single plant, perform a visual analysis of it and return an assessment of the plant's health status. Corn plants were chosen as a starting point, although the final decision is still pending and depends on the availability of good data for corn plants. In the first stage the app should only be able to distinguish between healthy or unhealthy plants. But the assessment will eventually consist of the "water level", nutrient sustenance and possible diseases of the plant. For the possible diseases the 3 most common of the selected plant type should be identified.
