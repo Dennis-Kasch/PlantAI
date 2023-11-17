@@ -29,7 +29,7 @@ The goal of this project is to develop an Android app (or Android integrated web
 
 * **Android development:** 
 * **Data Management:** 
-* **Methods and technologies** (for visual analysis): Dennis
+* **Methods and technologies** (for visual analysis): Dennis, David
 
 ## Schedule
 
