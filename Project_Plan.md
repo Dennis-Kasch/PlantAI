@@ -12,7 +12,7 @@ This is the project plan for the PlantAI project for Systems and Software Engine
 * Sarahe El Mimouni
 * Shivan Oskan
 
-Competences: web development, working with databases, java and python programming, basics of creating ML models
+Competences: web development, working with databases, java and python programming, basics of creating ML models  
 Missing competences: implementing Android apps, creating computer vision models
 
 ## Project Goals
