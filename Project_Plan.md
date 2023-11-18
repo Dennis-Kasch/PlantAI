@@ -24,8 +24,6 @@ The goal of this project is to develop an Android app that allows to take pictur
 * Android Basis + UI
 * Models and Algorithms (Visual Analysis)
 * Data Management
-* Testing
-* Documentation
 
 ## Responsibilities
 
