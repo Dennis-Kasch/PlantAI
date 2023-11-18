@@ -29,7 +29,7 @@ The goal of this project is to develop an Android app that allows to take pictur
 
 * **Android development:** 
 * **Models and Algorithms**: Dennis, David
-* **Data Management:**
+* **Data Management:** Daniel
 * **Testing:**
 * **Documentation:**
 
