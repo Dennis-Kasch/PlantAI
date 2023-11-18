@@ -17,19 +17,24 @@ Missing competences: implementing Android apps, creating computer vision models
 
 ## Project Goals
 
-The goal of this project is to develop an Android app (or Android integrated web app) that allows to take pictures of a single plant, perform a visual analysis of it and return an assessment of the plant's health status. Corn plants were chosen as a starting point, although the final decision is still pending and depends on the availability of good data for corn plants. In the first stage the app should only be able to distinguish between healthy or unhealthy plants. But the assessment will eventually consist of the "water level", nutrient sustenance and possible diseases of the plant. For the possible diseases the 3 most common of the selected plant type should be identified.
+The goal of this project is to develop an Android app that allows to take pictures of a single plant, perform a visual analysis of it and return an assessment of the plant's health status. Corn plants were chosen as a starting point, because they play an important part in agriculture and good datasets exists for it. In the first stage the app should be able to distinguish between healthy or unhealthy plants. But the assessment will eventually add "water level" analysis, nutrition of the plant and/or possible diseases. For the possible diseases the 3 most common of the selected plant type should be identified.
 
 ## Software Architecture
 
-* Android basis + UI (including camera handling)
-* Models / algorithms for visual analysis (water level, nutrition, diseases)
-* Data(base) management?
+* Android Basis + UI
+* Models and Algorithms (Visual Analysis)
+* Data Management
+* Testing
+* Documentation
 
 ## Responsibilities
 
 * **Android development:** 
-* **Data Management:** 
-* **Methods and technologies** (for visual analysis): Dennis, David
+* **Models and Algorithms**: Dennis, David
+* **Data Management:**
+* **Testing:**
+* **Documentation:**
+
 
 ## Schedule
 
@@ -40,6 +45,6 @@ The goal of this project is to develop an Android app (or Android integrated web
 
 ## Risks, Challenges and Counter Measures
 
-* **Availability of data:** Selection of a fitting plant, automated data generation, good research
-* **Sickness:** Duos, so there are always two people responsible for a topic
-* **Time:** Gradual increments of the app (general health -> water level -> nutrition -> diseases)
+* **Availability of data:** Selection of a fitting plant (corn), automated data generation, simulation
+* **Sickness:** Duos or (partly) overlapping so there are always two people responsible for a topic, highly depends on final team size
+* **Time:** Gradual increments of the app (general health, water level, plant nutrition, diseases, amount of plants)
