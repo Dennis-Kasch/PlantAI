@@ -33,7 +33,6 @@ The goal of this project is to develop an Android app that allows to take pictur
 * **Testing:**
 * **Documentation:**
 
-
 ## Schedule
 
 * **Research Phase (1-2 weeks):** Figure out what data to use, how/if to implement on Android or web, what technology to use and for what plant.
