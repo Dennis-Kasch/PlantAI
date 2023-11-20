@@ -4,13 +4,11 @@ This is the project plan for the PlantAI project for Systems and Software Engine
 
 ## Group Members
 
-* Abdelkhalek Kamkoum (6331906)
 * Ayham Ammar
 * Daniel Hahn
 * David Jordan
 * Dennis Kasch
 * Sarahe El Mimouni
-* Shivan Oskan
 
 Competences: web development, working with databases, java and python programming, basics of creating ML models  
 Missing competences: implementing Android apps, creating computer vision models
