@@ -1,0 +1,27 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Webserver for PlantAI Project",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dennis-Kasch/PlantAI.git"
+  },
+  "author": "Dennis Kasch",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dennis-Kasch/PlantAI/issues"
+  },
+  "homepage": "https://github.com/Dennis-Kasch/PlantAI#readme",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "openai": "^4.0.0",
+    "openai-api": "^1.3.1"
+  },
+  "type": "module"
+}
