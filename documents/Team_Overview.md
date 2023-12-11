@@ -4,7 +4,7 @@
 
 Dennis possesses practical experience in backend and API development, with proficiency in Python and Node.js.
 He has experience integrating and accessing databases, including both SQL and NoSQL, though his exposure to NoSQL is limited.
-He also has experience with coding Java, but eventually transitioned to Pythen a few years ago.
+He also has experience with coding Java, but eventually transitioned to Python a few years ago.
 
 In the PlantAI project, Dennis takes responsibility of examining the integration of tools like GPT-4 and GitHub Copilot for backend development and the overall development process.
 While Daniel Hahn focuses on the foundational development of the backend, Dennis supports him by exploring the incorporation of code generation, automated documentation, and bug fixing using these tools.
