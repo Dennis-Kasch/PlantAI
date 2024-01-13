@@ -14,7 +14,7 @@ import io.github.cdimascio.dotenv.Dotenv;
 
 public class ChatGPTConnection {
 
-    public static String getChatGPTAnswer(String userMessage, String apiKey, String model, String imageUrl) {
+    public static String getChatGPTAnswer(String userMessage, String apiKey, String model, String imageUrl, String tokenLimit) {
         String endpointUrl = "https://api.openai.com/v1/chat/completions";
 
         try {
@@ -40,8 +40,9 @@ public class ChatGPTConnection {
                                 }
                             ]
                         }
-                    ]
-                }""", model, userMessage, imageUrl);
+                    ],
+                    "max_tokens": %s
+                }""", model, userMessage, imageUrl, tokenLimit);
 
             try (OutputStream os = connection.getOutputStream()) {
                 os.write(requestBody.getBytes());
@@ -89,9 +90,10 @@ public class ChatGPTConnection {
         String apiKey = dotenv.get("API_KEY");
         String model = dotenv.get("MODEL");
         String imageUrl = dotenv.get("IMAGE_URL");
+        String tokenLimit = dotenv.get("TOKEN_LIMIT");
         String userMessage = "What is shown in this picture?";
 
-        String answer = getChatGPTAnswer(userMessage, apiKey, model, imageUrl);
+        String answer = getChatGPTAnswer(userMessage, apiKey, model, imageUrl, tokenLimit);
         System.out.println("User: " + userMessage);
         System.out.println("ChatGPT Answer: " + answer);
     }
