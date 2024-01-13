@@ -4,4 +4,4 @@
 .classpath
 .project
 .settings/
-target/
+backend/target/
