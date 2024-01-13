@@ -1,3 +1,7 @@
 .idea/
 .vscode/
 .env
+.classpath
+.project
+.settings/
+target/
