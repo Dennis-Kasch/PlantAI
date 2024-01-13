@@ -10,9 +10,11 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import io.github.cdimascio.dotenv.Dotenv;
+
 public class ChatGPTConnection {
 
-    public static String getChatGPTAnswer(String userMessage, String apiKey, String model) {
+    public static String getChatGPTAnswer(String userMessage, String apiKey, String model, String imageUrl) {
         String endpointUrl = "https://api.openai.com/v1/chat/completions";
 
         try {
@@ -23,7 +25,23 @@ public class ChatGPTConnection {
             connection.setRequestProperty("Authorization", "Bearer " + apiKey);
             connection.setDoOutput(true);
 
-            String requestBody = "{\"model\": \"" + model + "\", \"messages\": [{\"role\": \"user\", \"content\": \"" + userMessage + "\"}]}";
+            //String requestBody = "{'model': '" + model + "', 'messages': [{'role': 'user', 'content': '" + userMessage + "'}]}";
+            String requestBody = String.format("""
+                {
+                    "model": "%s",
+                    "messages": [
+                        {
+                            "role": "user",
+                            "content": [
+                                {"type": "text", "text": "%s"},
+                                {
+                                    "type": "image_url",
+                                    "image_url": {"url": "%s"}
+                                }
+                            ]
+                        }
+                    ]
+                }""", model, userMessage, imageUrl);
 
             try (OutputStream os = connection.getOutputStream()) {
                 os.write(requestBody.getBytes());
@@ -67,10 +85,13 @@ public class ChatGPTConnection {
 
 
     public static void main(String[] args) {
-        String userMessage = "What is the capital of Germany?";
-        String apiKey = "apiKey";
-        String model = "model";
-        String answer = getChatGPTAnswer(userMessage, apiKey, model);
+        Dotenv dotenv = Dotenv.configure().load();
+        String apiKey = dotenv.get("API_KEY");
+        String model = dotenv.get("MODEL");
+        String imageUrl = dotenv.get("IMAGE_URL");
+        String userMessage = "What is shown in this picture?";
+
+        String answer = getChatGPTAnswer(userMessage, apiKey, model, imageUrl);
         System.out.println("User: " + userMessage);
         System.out.println("ChatGPT Answer: " + answer);
     }
