@@ -14,13 +14,7 @@ public class SimpleController {
     public SimpleController() {
         // create connection to chatGPT
         Dotenv dotenv = Dotenv.configure().load();
-        //String tokenLimit = dotenv.get("TOKEN_LIMIT");
         this.connection = new ChatGPTConnection(dotenv.get("API_KEY"), dotenv.get("MODEL"));
-        /*
-        // send message + image and get answer
-        String userMessage = "What is shown in this picture?";
-        String imageUrl = "https://www.kaerchershop-schreiber.de/images/product_images/popup_images/Kaercher-Badeente-Quietscheente-Ente-gelb-gross_362275_0.jpg";
-         */
     }
 
     @GetMapping("/describeImage")
@@ -30,6 +24,7 @@ public class SimpleController {
         @RequestParam(value = "tokenLimit") String tokenLimit
     ) 
     {
+        // get an answer from chat gpt
         String answer = connection.getChatGPTAnswer(userMessage, imageUrl, tokenLimit);
         System.out.println(answer);
         return answer;
