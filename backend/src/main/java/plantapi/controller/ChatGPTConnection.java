@@ -1,4 +1,4 @@
-package APIConnector;
+package plantapi.controller;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -10,11 +10,37 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import io.github.cdimascio.dotenv.Dotenv;
-
 public class ChatGPTConnection {
 
-    public static String getChatGPTAnswer(String userMessage, String apiKey, String model, String imageUrl, String tokenLimit) {
+    private String apiKey, model;
+
+    public ChatGPTConnection(String apiKey, String model) {
+        this.apiKey = apiKey;
+        this.model = model;
+    }
+
+    private String createRequestBody(String userMessage, String imageUrl, String tokenLimit) {
+        String requestBody = String.format("""
+            {
+                "model": "%s",
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": [
+                            {"type": "text", "text": "%s"},
+                            {
+                                "type": "image_url",
+                                "image_url": {"url": "%s"}
+                            }
+                        ]
+                    }
+                ],
+                "max_tokens": %s
+            }""", model, userMessage, imageUrl, tokenLimit);
+        return requestBody;
+    }
+
+    public String getChatGPTAnswer(String userMessage, String imageUrl, String tokenLimit) {
         String endpointUrl = "https://api.openai.com/v1/chat/completions";
 
         try {
@@ -22,32 +48,13 @@ public class ChatGPTConnection {
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("POST");
             connection.setRequestProperty("Content-Type", "application/json");
-            connection.setRequestProperty("Authorization", "Bearer " + apiKey);
+            connection.setRequestProperty("Authorization", "Bearer "+this.apiKey);
             connection.setDoOutput(true);
 
-            //String requestBody = "{'model': '" + model + "', 'messages': [{'role': 'user', 'content': '" + userMessage + "'}]}";
-            String requestBody = String.format("""
-                {
-                    "model": "%s",
-                    "messages": [
-                        {
-                            "role": "user",
-                            "content": [
-                                {"type": "text", "text": "%s"},
-                                {
-                                    "type": "image_url",
-                                    "image_url": {"url": "%s"}
-                                }
-                            ]
-                        }
-                    ],
-                    "max_tokens": %s
-                }""", model, userMessage, imageUrl, tokenLimit);
-
+            String requestBody = createRequestBody(userMessage, imageUrl, tokenLimit);
             try (OutputStream os = connection.getOutputStream()) {
                 os.write(requestBody.getBytes());
             }
-
             try (BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
                 StringBuilder response = new StringBuilder();
                 String line;
@@ -63,7 +70,7 @@ public class ChatGPTConnection {
         }
     }
 
-    private static String extractAnswerFromJSON(String jsonResponse) {
+    private String extractAnswerFromJSON(String jsonResponse) {
         try {
             // Assuming the answer is in the "choices" array
             JsonNode jsonNode = new ObjectMapper().readTree(jsonResponse);
@@ -80,22 +87,8 @@ public class ChatGPTConnection {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return "Unable to extract answer from JSON response";
     }
 
-
-    public static void main(String[] args) {
-        Dotenv dotenv = Dotenv.configure().load();
-        String apiKey = dotenv.get("API_KEY");
-        String model = dotenv.get("MODEL");
-        String imageUrl = dotenv.get("IMAGE_URL");
-        String tokenLimit = dotenv.get("TOKEN_LIMIT");
-        String userMessage = "What is shown in this picture?";
-
-        String answer = getChatGPTAnswer(userMessage, apiKey, model, imageUrl, tokenLimit);
-        System.out.println("User: " + userMessage);
-        System.out.println("ChatGPT Answer: " + answer);
-    }
 }
 
