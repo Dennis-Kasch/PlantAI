@@ -1,5 +1,8 @@
 package plantapi.controller;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -19,39 +22,58 @@ public class ChatGPTConnection {
         this.model = model;
     }
 
-    private String createRequestBody(String userMessage, String imageUrl, String tokenLimit) {
-        String requestBody = String.format("""
-            {
-                "model": "%s",
-                "messages": [
-                    {
-                        "role": "user",
-                        "content": [
-                            {"type": "text", "text": "%s"},
-                            {
-                                "type": "image_url",
-                                "image_url": {"url": "%s"}
-                            }
-                        ]
-                    }
-                ],
-                "max_tokens": %s
-            }""", model, userMessage, imageUrl, tokenLimit);
-        return requestBody;
+    private String createRequestBody(String systemText, String userText, String imageUrl, String tokenLimit) {
+
+        JSONArray contentArray;
+        JSONObject contentItem, urlContentItem;
+
+        // create system message
+        JSONObject system = new JSONObject();
+        system.put("role", "system");
+        contentArray = new JSONArray();
+        contentItem = new JSONObject();
+        contentItem.put("type", "text");
+        contentItem.put("text", systemText);
+        contentArray.put(contentItem);
+        system.put("content", contentArray);
+
+        // create user message
+        JSONObject user = new JSONObject();
+        user.put("role", "user");
+        contentArray = new JSONArray();
+        contentItem = new JSONObject();
+        urlContentItem = new JSONObject();
+        urlContentItem.put("url", imageUrl);
+        contentItem.put("type", "image_url");
+        contentItem.put("image_url", urlContentItem);
+        contentArray.put(contentItem);
+        user.put("content", contentArray);
+
+        // create complete body
+        JSONObject body = new JSONObject();
+        body.put("model", model);
+        contentArray = new JSONArray();
+        contentArray.put(system);
+        contentArray.put(user);
+        body.put("messages", contentArray);
+        body.put("max_tokens", tokenLimit);
+
+        return body.toString();
     }
 
-    public String getChatGPTAnswer(String userMessage, String imageUrl, String tokenLimit) {
+    public String getChatGPTAnswer(String systemMessage, String userMessage, String imageUrl, String tokenLimit) {
         String endpointUrl = "https://api.openai.com/v1/chat/completions";
 
+        HttpURLConnection connection = null;
         try {
             URL url = new URL(endpointUrl);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("POST");
             connection.setRequestProperty("Content-Type", "application/json");
             connection.setRequestProperty("Authorization", "Bearer "+this.apiKey);
             connection.setDoOutput(true);
 
-            String requestBody = createRequestBody(userMessage, imageUrl, tokenLimit);
+            String requestBody = createRequestBody(systemMessage, userMessage, imageUrl, tokenLimit);
             try (OutputStream os = connection.getOutputStream()) {
                 os.write(requestBody.getBytes());
             }
@@ -65,6 +87,16 @@ public class ChatGPTConnection {
             }
 
         } catch (IOException e) {
+            if (connection != null) {
+                try {
+                    int responseCode = connection.getResponseCode();
+                    String responseMessage = connection.getResponseMessage();
+                    return "HTTP Error Code: " + responseCode + " - " + responseMessage;
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                    return "Error in retrieving error information";
+                }
+            }
             e.printStackTrace();
             return "Error in API request";
         }
