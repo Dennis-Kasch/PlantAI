@@ -43,8 +43,6 @@ public class SimpleController {
             If it has any diseases, please give an answer of the format 'diseases: [DISEASE_1, DISEASE_2, DISEASE_3, ..., DISEASE_N]'.
             Put each answer in its own line and seperate them with a comma.
         """;
-        systemMessage = systemMessage.replaceAll("\n", "\\\\n");
-        //String systemMessage="Please identify if the image is a plant or not and if it has any diseases.";
         // get an answer from chat gpt
         String answer = connection.getChatGPTAnswer(systemMessage, "empty", imageUrl, "300");
         System.out.println(answer);
