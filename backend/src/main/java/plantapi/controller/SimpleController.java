@@ -19,6 +19,7 @@ public class SimpleController {
 
     @GetMapping("/describeImage")
     public String describeImage(
+        // define necessary parameters for the endpoint
         @RequestParam(value = "userMessage") String userMessage,
         @RequestParam(value = "imageUrl") String imageUrl,
         @RequestParam(value = "tokenLimit") String tokenLimit
