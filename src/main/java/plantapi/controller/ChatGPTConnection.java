@@ -22,7 +22,7 @@ public class ChatGPTConnection {
         this.model = model;
     }
 
-    private String createRequestBody(String systemText, String userText, String imageUrl, String tokenLimit) {
+    private String createUrlRequestBody(String systemText, String userText, String imageUrl, String tokenLimit) {
 
         JSONArray contentArray;
         JSONObject contentItem, urlContentItem;
@@ -61,7 +61,7 @@ public class ChatGPTConnection {
         return body.toString();
     }
 
-    public String getChatGPTAnswer(String systemMessage, String userMessage, String imageUrl, String tokenLimit) {
+    public String getAnswerByUrl(String systemMessage, String userMessage, String imageUrl, String tokenLimit) {
         String endpointUrl = "https://api.openai.com/v1/chat/completions";
 
         HttpURLConnection connection = null;
@@ -73,7 +73,8 @@ public class ChatGPTConnection {
             connection.setRequestProperty("Authorization", "Bearer "+this.apiKey);
             connection.setDoOutput(true);
 
-            String requestBody = createRequestBody(systemMessage, userMessage, imageUrl, tokenLimit);
+            String requestBody = createUrlRequestBody(systemMessage, userMessage, imageUrl, tokenLimit);
+            System.err.println(requestBody);
             try (OutputStream os = connection.getOutputStream()) {
                 os.write(requestBody.getBytes());
             }
