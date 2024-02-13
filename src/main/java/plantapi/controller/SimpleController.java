@@ -83,40 +83,7 @@ public class SimpleController {
         }
     }
 
-    /*
-    @PostMapping("/uploadImage")
-    public String uploadImage(@RequestParam("image") MultipartFile image) {
-        try {
-            if (image.isEmpty()) {
-                return "Error: File is empty";
-            }
-            else {
-                BufferedImage bufferedImage = ImageIO.read(image.getInputStream());
-                int width = bufferedImage.getWidth();
-                int height = bufferedImage.getHeight();
-                if (width > 800 || height > 600) {
-                    return "Error: Image must be 800x600 pixels or smaller";
-                }
-                else {
-                    String fileName = image.getOriginalFilename();
-                    Path filePath = Paths.get(dotenv.get("UPLOAD_DIR"), fileName);
-                    System.out.println("Saving image to " + filePath.toString());
-                    image.transferTo(filePath.toFile());
-                    System.out.println("Uploading image to filehoster");
-                    String fileHosterUrl = uploadToImageHoster(filePath.toFile());
-                    String answer = "Image uploaded successfully. Hosted at: " + fileHosterUrl;
-                    System.out.println(answer);
-                    return answer;
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "Failed to upload image";
-        }
-    }
-     */
-
-     @PostMapping("/analysePlantImage")
+    @PostMapping("/analysePlantImage")
     public String analysePlantImage(
         @RequestParam(value = "image") MultipartFile image
     ) {
