@@ -74,7 +74,7 @@ public class ChatGPTConnection {
             connection.setDoOutput(true);
 
             String requestBody = createUrlRequestBody(systemMessage, userMessage, imageUrl, tokenLimit);
-            System.err.println(requestBody);
+            //System.err.println(requestBody);
             try (OutputStream os = connection.getOutputStream()) {
                 os.write(requestBody.getBytes());
             }
