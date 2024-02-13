@@ -6,3 +6,4 @@
 .settings/
 target/
 src/main/resources/images/
+src/test/resources/images/
