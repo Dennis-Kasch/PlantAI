@@ -6,19 +6,14 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Map;
-
 import javax.imageio.ImageIO;
-
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
-
 import io.github.cdimascio.dotenv.Dotenv;
 
 @RestController
@@ -27,6 +22,16 @@ public class SimpleController {
     private ChatGPTConnection connection;
     private Cloudinary cloudinary;
     private Dotenv dotenv;
+
+    public SimpleController() {
+        // Create connection to chatGPT
+        dotenv = Dotenv.configure().load();
+        this.connection = new ChatGPTConnection(dotenv.get("GPT_API_KEY"), dotenv.get("MODEL"));
+        this.cloudinary = new Cloudinary(ObjectUtils.asMap(
+            "cloud_name", dotenv.get("CLOUDINARY_NAME"),
+            "api_key", dotenv.get("CLOUDINARY_KEY"),
+            "api_secret", dotenv.get("CLOUDINARY_SECRET")));
+    }
 
     @SuppressWarnings("unchecked")
     private String uploadToImageHoster(File file) {
@@ -39,17 +44,6 @@ public class SimpleController {
         }
     }
 
-    public SimpleController() {
-        // Create connection to chatGPT
-        dotenv = Dotenv.configure().load();
-        this.connection = new ChatGPTConnection(dotenv.get("GPT_API_KEY"), dotenv.get("MODEL"));
-        //System.out.println("GPT_API_KEY: "+dotenv.get("GPT_API_KEY"));
-        this.cloudinary = new Cloudinary(ObjectUtils.asMap(
-            "cloud_name", dotenv.get("CLOUDINARY_NAME"),
-            "api_key", dotenv.get("CLOUDINARY_KEY"),
-            "api_secret", dotenv.get("CLOUDINARY_SECRET")));
-    }
-
     @GetMapping("/")
     public String base() {
         String answer = "Server is running";
@@ -57,16 +51,36 @@ public class SimpleController {
         return answer;
     }
 
-    @GetMapping("/describeImage")
-    public String describeImage(
-        @RequestParam(value = "userMessage") String userMessage,
-        @RequestParam(value = "imageUrl") String imageUrl
-    ) {
-        // Get an answer from chat gpt
-        String answer = connection.getAnswerByUrl("empty", userMessage, imageUrl, "300");
-        System.out.println(answer);
-        return answer;
-    }
+    @PostMapping("/uploadImage")
+    public String uploadImage(@RequestParam("image") MultipartFile image) {
+        try {
+            if (image.isEmpty()) {
+                return "Error: File is empty";
+            }
+            else {
+                BufferedImage bufferedImage = ImageIO.read(image.getInputStream());
+                int width = bufferedImage.getWidth();
+                int height = bufferedImage.getHeight();
+                if (width > 800 || height > 600) {
+                    return "Error: Image must be 800x600 pixels or smaller";
+                }
+                else {
+                    String fileName = image.getOriginalFilename();
+                    Path filePath = Paths.get(dotenv.get("UPLOAD_DIR"), fileName);
+                    System.out.println("Saving image to " + filePath.toString());
+                    image.transferTo(filePath.toFile());
+                    System.out.println("Uploading image to filehoster");
+                    String fileHosterUrl = uploadToImageHoster(filePath.toFile());
+                    String answer = "Image uploaded successfully. Hosted at: " + fileHosterUrl;
+                    System.out.println(answer);
+                    return answer;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Failed to upload image";
+        }
+    }    
 
     @GetMapping("/analysePlantImage")
     public String analysePlantImage(
@@ -79,49 +93,9 @@ public class SimpleController {
             If it has any diseases, please give an answer of the format 'diseases: [DISEASE_1, DISEASE_2, DISEASE_3, ..., DISEASE_N]'.
             Put each answer in its own line and separate them with a comma.
         """;
-        String filePath = "./src/main/resources/images/sent/360_F_537961897_S27bLRQW19X5svVE3BG4R2NvLPCpxIRh.jpg";
-        String answer = connection.getAnswerByUrl(systemMessage, "empty", filePath, "300");
+        String answer = connection.getAnswerByUrl(systemMessage, "empty", imageUrl, "300");
         System.out.println(answer);
         return answer;
-    }
-
-    @PostMapping("/uploadImage")
-    public String uploadImage(@RequestParam("image") MultipartFile image) {
-        try {
-            if (image.isEmpty()) {
-                return "File is empty";
-            }
-
-            BufferedImage bufferedImage = ImageIO.read(image.getInputStream());
-            int width = bufferedImage.getWidth();
-            int height = bufferedImage.getHeight();
-            if (width > 800 || height > 600) {
-                return "Error: Image must be 800x600 pixels or smaller";
-            }
-
-            /*
-            File directory = new File(dotenv.get("CLOUDINARY_NAME"));
-            if (!directory.exists()) {
-                System.out.println("directory "+directory.getName()+" does NOT exist");
-                directory.mkdirs();
-            }
-            else {
-                System.out.println("directory "+directory.getName()+" does exist");
-            } */
-
-            String fileName = image.getOriginalFilename();
-            Path filePath = Paths.get(dotenv.get("UPLOAD_DIR"), fileName);
-            System.out.println("Attempting to save image to: " + filePath.toString());
-            image.transferTo(filePath.toFile());
-
-            String fileHosterUrl = uploadToImageHoster(filePath.toFile());
-            String answer = "Image uploaded successfully. Hosted at: " + fileHosterUrl;
-            System.out.println(answer);
-            return answer;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "Failed to upload image";
-        }
     }
 
 }
