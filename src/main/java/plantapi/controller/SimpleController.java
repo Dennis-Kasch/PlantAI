@@ -25,21 +25,8 @@ import io.github.cdimascio.dotenv.Dotenv;
 public class SimpleController {
 
     private ChatGPTConnection connection;
-
-    @Value("${app.upload.dir}")
-    private String imageUploadPath;
-
-        // Cloudinary configuration properties
-    @Value("${cloudinary.cloud_name}")
-    private String cloudName;
-
-    @Value("${cloudinary.api_key}")
-    private String apiKey;
-
-    @Value("${cloudinary.api_secret}")
-    private String apiSecret;
-
     private Cloudinary cloudinary;
+    private Dotenv dotenv;
 
     @SuppressWarnings("unchecked")
     private String uploadToImageHoster(File file) {
@@ -54,13 +41,13 @@ public class SimpleController {
 
     public SimpleController() {
         // Create connection to chatGPT
-        Dotenv dotenv = Dotenv.configure().load();
-        this.connection = new ChatGPTConnection(dotenv.get("API_KEY"), dotenv.get("MODEL"));
-        // Initialize Cloudinary object with your Cloudinary account details
+        dotenv = Dotenv.configure().load();
+        this.connection = new ChatGPTConnection(dotenv.get("GPT_API_KEY"), dotenv.get("MODEL"));
+        //System.out.println("GPT_API_KEY: "+dotenv.get("GPT_API_KEY"));
         this.cloudinary = new Cloudinary(ObjectUtils.asMap(
-            "cloud_name", cloudName,
-            "api_key", apiKey,
-            "api_secret", apiSecret));
+            "cloud_name", dotenv.get("CLOUDINARY_NAME"),
+            "api_key", dotenv.get("CLOUDINARY_KEY"),
+            "api_secret", dotenv.get("CLOUDINARY_SECRET")));
     }
 
     @GetMapping("/")
@@ -87,7 +74,7 @@ public class SimpleController {
     ) {
         String systemMessage = """
             When I send you an image please check if it is an image of a plant or a part of a plant. If not, reply exactly with 'ERROR: This image is no plant or part of a plant.' and nothing else.
-            If the image is a plant or part of a plant, please give the name of the plant in the format 'plant name: [NAME OF THE PLANT]'. Answer 'plant name: unklnown' if you cannot identify it.
+            If the image is a plant or part of a plant, please give the name of the plant in the format 'plant name: [NAME OF THE PLANT]'. Answer 'plant name: unknown' if you cannot identify it.
             In addition, please identify if this plant is healthy or if it has any diseases. Answer with 'health status: healthy' or 'health status: unhealthy' according to the health status of the plant.
             If it has any diseases, please give an answer of the format 'diseases: [DISEASE_1, DISEASE_2, DISEASE_3, ..., DISEASE_N]'.
             Put each answer in its own line and separate them with a comma.
@@ -112,22 +99,25 @@ public class SimpleController {
                 return "Error: Image must be 800x600 pixels or smaller";
             }
 
-            File directory = new File(imageUploadPath);
+            /*
+            File directory = new File(dotenv.get("CLOUDINARY_NAME"));
             if (!directory.exists()) {
                 System.out.println("directory "+directory.getName()+" does NOT exist");
                 directory.mkdirs();
             }
             else {
                 System.out.println("directory "+directory.getName()+" does exist");
-            }
+            } */
 
             String fileName = image.getOriginalFilename();
-            Path filePath = Paths.get(imageUploadPath, fileName);
+            Path filePath = Paths.get(dotenv.get("UPLOAD_DIR"), fileName);
             System.out.println("Attempting to save image to: " + filePath.toString());
             image.transferTo(filePath.toFile());
 
             String fileHosterUrl = uploadToImageHoster(filePath.toFile());
-            return "Image uploaded successfully. Hosted at: " + fileHosterUrl;
+            String answer = "Image uploaded successfully. Hosted at: " + fileHosterUrl;
+            System.out.println(answer);
+            return answer;
         } catch (Exception e) {
             e.printStackTrace();
             return "Failed to upload image";
