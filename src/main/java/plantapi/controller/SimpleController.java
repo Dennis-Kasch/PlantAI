@@ -95,8 +95,6 @@ public class SimpleController {
     }
 
     private String readPromptFromFile(String filePath) {
-        String workingDir = System.getProperty("user.dir");
-        System.out.println("Current working directory: " + workingDir);
         try {
             List<String> allLines = Files.readAllLines(Paths.get(filePath));
             String analysisPrompt = String.join("\n", allLines);
