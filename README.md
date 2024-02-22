@@ -20,8 +20,8 @@ There are currently two endpoints in the backend:
 * `POST localhost:3000/analysePlantImage`: Receives an image as multipart file and saves it to the path specified in LOCAL_IMAGE_DIR. The image cannot be larger IMAGE_MAX_WIDTH or IMAGE_MAX_HEIGHT, or it will be rejected. If the image meets the size criteria it is uploaded to the filehoster. After a successful upload, the url of the image is forwarded to the OpenAI api together with the prompt defined in ./main/resources/analysisPrompt.txt as system message. The prompt can be adjusted if necessary.
 If a plant is shown in the image, it returns an analysis of its health status in the given form:
 ```
-  plant_name: [NAME_OF_THE_PLANT]  
-  health_status: ["healthy" OR "unhealthy"]  
-  disease_list: ["empty" OR LIST_OF_DISEASES]  
+plant_name: [NAME_OF_THE_PLANT]  
+health_status: ["healthy" OR "unhealthy"]  
+disease_list: ["empty" OR LIST_OF_DISEASES]  
 ```
 If the image does not show a plant, an according error message is returned.
