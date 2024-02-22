@@ -1,16 +1,50 @@
 package sqlconnection;
 
+import java.io.InputStream;
 import java.sql.*;
+import java.util.Properties;
 
 public class SQLConnector {
-    private static final String CONNECTION_URL = "jdbc:mysql://localhost:3306/plantaid?serverTimezone=UTC";
-    private static final String USER = "root";
-    private static final String PASSWORD = "user1234";
 
     private Connection connection;
 
     public SQLConnector() throws SQLException {
-        this.connection = DriverManager.getConnection(CONNECTION_URL, USER, PASSWORD);
+        Properties props = new Properties();
+        try (InputStream input = getClass().getClassLoader().getResourceAsStream("db.properties")) {
+            if (input == null) {
+                System.out.println("Sorry, unable to find properties");
+                return;
+            }
+
+            // Load a properties file from class path, inside static method
+            props.load(input);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        String connectionUrl = props.getProperty("db.url");
+        String user = props.getProperty("db.user");
+        String password = props.getProperty("db.password");
+
+        this.connection = DriverManager.getConnection(connectionUrl, user, password);
+    }
+
+    public Boolean checkTableExists(String tableName) throws SQLException {
+        DatabaseMetaData dmd = connection.getMetaData();
+        ResultSet rs = dmd.getTables(null,null,tableName, null);
+        return  rs.next();
+    }
+
+    public void createTable(String tableName, String[] columnDefinitions) throws SQLException {
+        StringBuilder queryBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ")
+                .append(tableName)
+                .append(" (")
+                .append(String.join(", ", columnDefinitions))
+                .append(")");
+
+        try (Statement statement = connection.createStatement()) {
+            statement.executeUpdate(queryBuilder.toString());
+        }
     }
 
     public void closeConnection() {
