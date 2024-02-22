@@ -15,11 +15,11 @@ import java.net.URL;
 
 public class ChatGPTConnection {
 
-    private String apiKey, model;
+    private String apiKey, visualModel;
 
-    public ChatGPTConnection(String apiKey, String model) {
+    public ChatGPTConnection(String apiKey, String visualModel) {
         this.apiKey = apiKey;
-        this.model = model;
+        this.visualModel = visualModel;
     }
 
     private String createUrlRequestBody(String systemText, String userText, String imageUrl, String tokenLimit) {
@@ -51,7 +51,7 @@ public class ChatGPTConnection {
 
         // create complete body
         JSONObject body = new JSONObject();
-        body.put("model", model);
+        body.put("model", visualModel);
         contentArray = new JSONArray();
         contentArray.put(system);
         contentArray.put(user);
@@ -59,6 +59,50 @@ public class ChatGPTConnection {
         body.put("max_tokens", tokenLimit);
 
         return body.toString();
+    }
+
+    public String checkApiKey() {
+        System.out.println("Checking if API key is valid and has access to visual model "+visualModel);
+        String requestUrl = "https://api.openai.com/v1/models";
+        try {
+            URL url = new URL(requestUrl);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            connection.setRequestProperty("Authorization", "Bearer " + apiKey);
+
+            int responseCode = connection.getResponseCode();
+            //System.out.println("Response Code: " + responseCode);
+
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                String inputLine;
+                StringBuilder response = new StringBuilder();
+
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+                in.close();
+
+                JSONObject jsonResponse = new JSONObject(response.toString());
+                JSONArray models = jsonResponse.getJSONArray("data"); // Assuming the key "data" contains the models array
+
+                for (int i = 0; i < models.length(); i++) {
+                    JSONObject model = models.getJSONObject(i);
+                    String modelId = model.getString("id");
+                    // Check if the model ID matches the visual model
+                    if (visualModel.equals(modelId)) {
+                        return "API key has access to visual model.";
+                    }
+                }
+                return "ERROR: It seems the given API key has no access to the visual model. The server will not be started.";
+            }
+            else {
+                return "ERROR: It seems like the given API key is invalid (response = "+responseCode+"). The server will not be started.";
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "ERROR: It seems like there is a problem with the connection to GPT api. The server will not be started."; // Error occurred, assume the model not found
+        }
     }
 
     public String getAnswerByUrl(String systemMessage, String userMessage, String imageUrl, String tokenLimit) {
