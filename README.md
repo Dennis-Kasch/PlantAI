@@ -10,8 +10,8 @@ In order to run the backend Java version 17 or higher must be installed on the s
 
 The .env file contains variables for access to the OpenAI API, image settings and file hosting. Most variables should be left untouched, but the variables "GPT_API_KEY" and "LOCAL_IMAGE_DIR" need to be set.
 
-"GPT_API_KEY" should be set to your API key for OpenAI and will be used to make requests to the endpoint of the visual model.
-"LOCAL_IMAGE_DIR" should be set to a local directory on the backend machine, where received images will be saved.
+* "GPT_API_KEY" should be set to your API key for OpenAI and will be used to make requests to the endpoint of the visual model.
+* "LOCAL_IMAGE_DIR" should be set to a local directory on the backend machine, where received images will be saved.
 
 ## Endpoints
 
