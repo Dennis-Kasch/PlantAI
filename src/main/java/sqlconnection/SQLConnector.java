@@ -47,6 +47,42 @@ public class SQLConnector {
         }
     }
 
+    public void createInitialTables() throws SQLException {
+        Boolean imagesTable = checkTableExists("Images");
+        Boolean usersTable = checkTableExists("Users");
+        if (imagesTable & usersTable){
+            return;
+        }
+        else{
+            String[] imagesColumns = {
+                    "_id INT PRIMARY KEY AUTO_INCREMENT",
+                    "_username VARCHAR(50) NOT NULL",
+                    "imageURL VARCHAR(200) NOT NULL",
+                    "imageName VARCHAR(100)",
+                    "imageHash VARCHAR(200) NOT NULL",
+                    "analysisResult VARCHAR(1000)"
+            };
+            String[] usersColumns = {
+                    "_username VARCHAR(50) PRIMARY KEY",
+                    "firstname VARCHAR(100)",
+                    "lastname VARCHAR(100) NOT NULL",
+                    "email VARCHAR(200) NOT NULL",
+                    "password VARCHAR(100) NOT NULL"
+            };
+            createTable("Images", imagesColumns);
+            createTable("Users", usersColumns);
+
+        }
+    }
+
+    public void createTestTables() throws SQLException {
+        insertIntoImages("testUser","testURL","imageName",
+                "exampleHash","This is a test photo.");
+        insertIntoUsers("testUser", "First", "Last",
+                "abc@def.com","testPassword");
+
+    }
+
     public void closeConnection() {
         try {
             if (connection != null && !connection.isClosed()) {
@@ -57,17 +93,36 @@ public class SQLConnector {
         }
     }
 
-    public void insertIntoPhotos(String url, String info) throws SQLException {
-        String query = " insert into photos (url, result)"
-                + " values (?, ?)";
+    public void insertIntoImages(String username, String imageUrl, String imageName,
+                                 String imageHash, String analysisResult) throws SQLException {
+        String query = " insert into Images (_username, imageUrl, imageName, imageHash, " +
+                "analysisResult)"
+                + " values (?, ?, ?, ?, ?)";
         PreparedStatement ps = connection.prepareStatement(query);
-        ps.setString (1, url);
-        ps.setString (2, info);
+        ps.setString (1, username);
+        ps.setString (2, imageUrl);
+        ps.setString (3, imageName);
+        ps.setString (4, imageHash);
+        ps.setString (5, analysisResult);
         ps.execute();
     }
 
-    public Boolean checkPhotoUrl(String url) throws SQLException {
-        String query = " select * from photos where url = '" + url +"'";
+    public void insertIntoUsers(String username, String firstName, String lastName,
+                                String email, String password) throws SQLException {
+        String query = " insert into Users (_username, firstName, lastName, email, " +
+                "password)"
+                + " values (?, ?, ?, ?, ?)";
+        PreparedStatement ps = connection.prepareStatement(query);
+        ps.setString (1, username);
+        ps.setString (2, firstName);
+        ps.setString (3, lastName);
+        ps.setString (4, email);
+        ps.setString (5, password);
+        ps.execute();
+    }
+
+    public Boolean checkItem(String table, String column, String item) throws SQLException {
+        String query = " select * from "+ table +" where "+ column +" = '" + item +"'";
         PreparedStatement ps = connection.prepareStatement(query);
         ResultSet rs = ps.executeQuery();
         if (rs.next()){
