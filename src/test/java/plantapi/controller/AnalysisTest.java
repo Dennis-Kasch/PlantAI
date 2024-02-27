@@ -79,7 +79,7 @@ public class AnalysisTest {
         }
     }
 
-    public void runPlantTest(String jsonPath, String testArrayKey) {
+    public void runPlantTest(String jsonPath, String testArrayKey, String plantName) {
         String imageUrl, gptAnswer;
         List<JSONObject> testArray = getJsonArray(jsonPath, testArrayKey);
         int totalCount = testArray.size();
@@ -89,7 +89,7 @@ public class AnalysisTest {
             System.out.println("plant id:"+id);
             // get analysis from chatgpt
             imageUrl = appleObject.getString("image_url");
-            gptAnswer = connection.getAnswerByUrl(systemMessage, "empty", imageUrl, "300");
+            gptAnswer = connection.getAnswerByUrl(systemMessage, "The image shows a "+plantName+" plant.", imageUrl, "300");
             // check if analysis matches expected values
             String expectedPlant = appleObject.getString("plant");
             String expectedStatus = appleObject.getString("status");
@@ -125,21 +125,42 @@ public class AnalysisTest {
     public void healthyApplesTest() {
         String jsonPath = "./src/test/resources/analysis-testing/apple_images.json";
         String testArrayKey = "apples_healthy";
-        runPlantTest(jsonPath, testArrayKey);
+        runPlantTest(jsonPath, testArrayKey, "apple");
     }
 
     @Test
     public void scabApplesTest() {
         String jsonPath = "./src/test/resources/analysis-testing/apple_images.json";
         String testArrayKey = "apples_scab";
-        runPlantTest(jsonPath, testArrayKey);
+        runPlantTest(jsonPath, testArrayKey, "apple");
     }
     
     @Test
     public void rustApplesTest() {
         String jsonPath = "./src/test/resources/analysis-testing/apple_images.json";
         String testArrayKey = "apples_rust";
-        runPlantTest(jsonPath, testArrayKey);
+        runPlantTest(jsonPath, testArrayKey, "apple");
+    }
+
+    @Test
+    public void blightCornTest() {
+        String jsonPath = "./src/test/resources/analysis-testing/corn_images.json";
+        String testArrayKey = "corn_blight";
+        runPlantTest(jsonPath, testArrayKey, "corn");
+    }
+
+    @Test
+    public void rustCornTest() {
+        String jsonPath = "./src/test/resources/analysis-testing/corn_images.json";
+        String testArrayKey = "corn_rust";
+        runPlantTest(jsonPath, testArrayKey, "corn");
+    }
+
+    @Test
+    public void grayCornTest() {
+        String jsonPath = "./src/test/resources/analysis-testing/corn_images.json";
+        String testArrayKey = "corn_gray";
+        runPlantTest(jsonPath, testArrayKey, "corn");
     }
 
 }
