@@ -133,9 +133,10 @@ public class SQLConnector {
         }
     }
 
-    public ResultSet returnInfo(String table, String restriction) throws SQLException {
-        String query = " select * from " + table + " where url = '" + restriction + "'";
+    public ResultSet returnInfo(String table, String column, String restriction) throws SQLException {
+        String query = " select * from " + table + " where "+ column +" = '" + restriction + "'";
         PreparedStatement ps = connection.prepareStatement(query);
-        return ps.executeQuery();
+        ResultSet rs = ps.executeQuery();
+        return rs;
     }
 }
