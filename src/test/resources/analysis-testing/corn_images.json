@@ -1,0 +1,218 @@
+{
+    "corn_blight": [
+        {
+            "id": "clb1",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Corn%20leaf%20blight/0805Fig3400.jpg",
+            "plant": "corn",
+            "status": "unhealthy",
+            "diseases": "blight"
+        },
+        {
+            "id": "clb2",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Corn%20leaf%20blight/Freckles-in-older-lesion1.jpg",
+            "plant": "corn",
+            "status": "unhealthy",
+            "diseases": "blight"
+        },
+        {
+            "id": "clb3",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Corn%20leaf%20blight/28430_web.jpg",
+            "plant": "corn",
+            "status": "unhealthy",
+            "diseases": "blight"
+        },
+        {
+            "id": "clb4",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Corn%20leaf%20blight/Northern-Corn-Leaf-Blight4.jpg",
+            "plant": "corn",
+            "status": "unhealthy",
+            "diseases": "blight"
+        },
+        {
+            "id": "clb5",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Corn%20leaf%20blight/20160812__13ST_xanthomonas%7E1.jpg",
+            "plant": "corn",
+            "status": "unhealthy",
+            "diseases": "blight"
+        },
+        {
+            "id": "clb6",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Corn%20leaf%20blight/00c.jpg",
+            "plant": "corn",
+            "status": "unhealthy",
+            "diseases": "blight"
+        },
+        {
+            "id": "clb7",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Corn%20leaf%20blight/04c.jpg",
+            "plant": "corn",
+            "status": "unhealthy",
+            "diseases": "blight"
+        },
+        {
+            "id": "clb8",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Corn%20leaf%20blight/swcdg1.jpg",
+            "plant": "corn",
+            "status": "unhealthy",
+            "diseases": "blight"
+        },
+        {
+            "id": "clb9",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Corn%20leaf%20blight/photo-7-004.jpg",
+            "plant": "corn",
+            "status": "unhealthy",
+            "diseases": "blight"
+        },
+        {
+            "id": "clb10",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Corn%20leaf%20blight/image393.jpg",
+            "plant": "corn",
+            "status": "unhealthy",
+            "diseases": "blight"
+        }
+    ],
+    "corn_rust": [
+        {
+            "id": "clr1",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Corn%20rust%20leaf/IMG_1376-300x300.jpg",
+            "plant": "corn",
+            "status": "unhealthy",
+            "diseases": "rust"
+        },
+        {
+            "id": "clr2",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Corn%20rust%20leaf/CornRustFS3.jpg",
+            "plant": "corn",
+            "status": "unhealthy",
+            "diseases": "rust"
+        },
+        {
+            "id": "clr3",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Corn%20rust%20leaf/CornRust1.jpg",
+            "plant": "corn",
+            "status": "unhealthy",
+            "diseases": "rust"
+        },
+        {
+            "id": "clr4",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Corn%20rust%20leaf/SCR-2015.jpg",
+            "plant": "corn",
+            "status": "unhealthy",
+            "diseases": "rust"
+        },
+        {
+            "id": "clr5",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Corn%20rust%20leaf/imgF.jpg",
+            "plant": "corn",
+            "status": "unhealthy",
+            "diseases": "rust"
+        },
+        {
+            "id": "clr6",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Corn%20rust%20leaf/STANDALONE_Southern-corn-rust_01-WEB.jpg",
+            "plant": "corn",
+            "status": "unhealthy",
+            "diseases": "rust"
+        },
+        {
+            "id": "clr7",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Corn%20rust%20leaf/corn%2520rust.jpg",
+            "plant": "corn",
+            "status": "unhealthy",
+            "diseases": "rust"
+        },
+        {
+            "id": "clr8",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Corn%20rust%20leaf/corn-rust-3.jpg",
+            "plant": "corn",
+            "status": "unhealthy",
+            "diseases": "rust"
+        },
+        {
+            "id": "clr9",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Corn%20rust%20leaf/Southern-rust-underside-of-leaf-1.jpg",
+            "plant": "corn",
+            "status": "unhealthy",
+            "diseases": "rust"
+        },
+        {
+            "id": "clr10",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Corn%20rust%20leaf/swcdg3.jpg",
+            "plant": "corn",
+            "status": "unhealthy",
+            "diseases": "rust"
+        }
+    ],
+    "corn_gray": [
+        {
+            "id": "clg1",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Corn%20Gray%20leaf%20spot/0796.16graylspot.jpg",
+            "plant": "corn",
+            "status": "unhealthy",
+            "diseases": "gray"
+        },
+        {
+            "id": "clg2",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Corn%20Gray%20leaf%20spot/1355.51grayleafspot.jpg",
+            "plant": "corn",
+            "status": "unhealthy",
+            "diseases": "gray"
+        },
+        {
+            "id": "clg3",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Corn%20Gray%20leaf%20spot/22-broders-CR-Gray-leaf-spot-corn.jpg",
+            "plant": "corn",
+            "status": "unhealthy",
+            "diseases": "gray"
+        },
+        {
+            "id": "clg4",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Corn%20Gray%20leaf%20spot/FJ_018_F16271-3.jpg",
+            "plant": "corn",
+            "status": "unhealthy",
+            "diseases": "gray"
+        },
+        {
+            "id": "clg5",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Corn%20Gray%20leaf%20spot/GrayLeafSpot_Chilvers.jpg",
+            "plant": "corn",
+            "status": "unhealthy",
+            "diseases": "gray"
+        },
+        {
+            "id": "clg6",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Corn%20Gray%20leaf%20spot/corn-gray-leaf-spot.jpg",
+            "plant": "corn",
+            "status": "unhealthy",
+            "diseases": "gray"
+        },
+        {
+            "id": "clg7",
+            "image_url": "https://github.com/pratikkayal/PlantDoc-Dataset/blob/master/train/Corn%20Gray%20leaf%20spot/g1902-1.jpg",
+            "plant": "corn",
+            "status": "unhealthy",
+            "diseases": "gray"
+        },
+        {
+            "id": "clg8",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Corn%20Gray%20leaf%20spot/gls99-anamosa.jpg",
+            "plant": "corn",
+            "status": "unhealthy",
+            "diseases": "gray"
+        },
+        {
+            "id": "clg9",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Corn%20Gray%20leaf%20spot/gray_leaf_spot_developing.jpg",
+            "plant": "corn",
+            "status": "unhealthy",
+            "diseases": "gray"
+        },
+        {
+            "id": "clg10",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Corn%20Gray%20leaf%20spot/grayleafspotinbred.jpg",
+            "plant": "corn",
+            "status": "unhealthy",
+            "diseases": "gray"
+        }
+    ]
+}
