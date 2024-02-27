@@ -108,9 +108,8 @@ public class AnalysisTest {
         final float statusPercentage = (float) statusAssertCounter/totalCount;
         final float diseasePercentage = (float) diseaseAssertCounter/totalCount;
         System.out.println("plants:"+plantPercentage+", statuses:"+statusPercentage+", diseases:"+diseasePercentage);
-        //assertions.add(() -> assertTrue(plantPercentage>0.8, "80% of plant names must be correct"));
-        assertions.add(() -> assertTrue(statusPercentage>0.8, "80% of health statuses must be correct"));
-        //assertions.add(() -> assertTrue(diseasePercentage>0.8, "80% of diseases must be correct"));
+        // make sure at least 80% of plants are diagnosed correctly
+        assertions.add(() -> assertTrue(statusPercentage>=0.8, "At least 80% of health statuses must be correct."));
         assertAll("Analysis validations", assertions);
     }
 
@@ -123,42 +122,42 @@ public class AnalysisTest {
 
     @Test
     public void healthyApplesTest() {
-        String jsonPath = "./src/test/resources/analysis-testing/apple_images.json";
+        String jsonPath = "./src/test/resources/analysis-testing/apple_tests.json";
         String testArrayKey = "apples_healthy";
         runPlantTest(jsonPath, testArrayKey, "apple");
     }
 
     @Test
     public void scabApplesTest() {
-        String jsonPath = "./src/test/resources/analysis-testing/apple_images.json";
+        String jsonPath = "./src/test/resources/analysis-testing/apple_tests.json";
         String testArrayKey = "apples_scab";
         runPlantTest(jsonPath, testArrayKey, "apple");
     }
     
     @Test
     public void rustApplesTest() {
-        String jsonPath = "./src/test/resources/analysis-testing/apple_images.json";
+        String jsonPath = "./src/test/resources/analysis-testing/apple_tests.json";
         String testArrayKey = "apples_rust";
         runPlantTest(jsonPath, testArrayKey, "apple");
     }
 
     @Test
     public void blightCornTest() {
-        String jsonPath = "./src/test/resources/analysis-testing/corn_images.json";
+        String jsonPath = "./src/test/resources/analysis-testing/corn_tests.json";
         String testArrayKey = "corn_blight";
         runPlantTest(jsonPath, testArrayKey, "corn");
     }
 
     @Test
     public void rustCornTest() {
-        String jsonPath = "./src/test/resources/analysis-testing/corn_images.json";
+        String jsonPath = "./src/test/resources/analysis-testing/corn_tests.json";
         String testArrayKey = "corn_rust";
         runPlantTest(jsonPath, testArrayKey, "corn");
     }
 
     @Test
     public void grayCornTest() {
-        String jsonPath = "./src/test/resources/analysis-testing/corn_images.json";
+        String jsonPath = "./src/test/resources/analysis-testing/corn_tests.json";
         String testArrayKey = "corn_gray";
         runPlantTest(jsonPath, testArrayKey, "corn");
     }
