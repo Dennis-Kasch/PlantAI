@@ -25,7 +25,7 @@ public class ChatGPTConnection {
     private String createUrlRequestBody(String systemText, String userText, String imageUrl, String tokenLimit) {
 
         JSONArray contentArray;
-        JSONObject contentItem, urlContentItem;
+        JSONObject contentItem, urlContentItem, textContentItem;
 
         // create system message
         JSONObject system = new JSONObject();
@@ -41,6 +41,14 @@ public class ChatGPTConnection {
         JSONObject user = new JSONObject();
         user.put("role", "user");
         contentArray = new JSONArray();
+
+        // add user text message
+        textContentItem = new JSONObject();
+        textContentItem.put("type", "text");
+        textContentItem.put("text", userText);
+        contentArray.put(textContentItem);
+
+        // add user image message
         contentItem = new JSONObject();
         urlContentItem = new JSONObject();
         urlContentItem.put("url", imageUrl);
