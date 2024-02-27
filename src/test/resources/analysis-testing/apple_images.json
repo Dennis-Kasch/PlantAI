@@ -1,0 +1,218 @@
+{
+    "apples_healthy": [
+        {
+            "id": "ah1",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Apple%20leaf/appleleaf%2Btrial%2B007.JPG.jpg",
+            "plant": "apple",
+            "status": "healthy",
+            "diseases": "empty"
+        },
+        {
+            "id": "ah2",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Apple%20leaf/4633813-sweet-apple-with-leaf.jpg",
+            "plant": "apple",
+            "status": "healthy",
+            "diseases": "empty"
+        },
+        {
+            "id": "ah3",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Apple%20leaf/Apple-Leaves-Diabetes.jpg",
+            "plant": "apple",
+            "status": "healthy",
+            "diseases": "empty"
+        },
+        {
+            "id": "ah4",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Apple%20leaf/AppleLeavesInRain.jpg",
+            "plant": "apple",
+            "status": "healthy",
+            "diseases": "empty"
+        },
+        {
+            "id": "ah5",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Apple%20leaf/apples_silver-leaf_04_zoom.jpg",
+            "plant": "apple",
+            "status": "healthy",
+            "diseases": "empty"
+        },
+        {
+            "id": "ah6",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Apple%20leaf/CRABAPPLE3_leaves.jpg",
+            "plant": "apple",
+            "status": "healthy",
+            "diseases": "empty"
+        },
+        {
+            "id": "ah7",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Apple%20leaf/depositphotos_30057617-Green-leaf-of-apple-tree.jpg",
+            "plant": "apple",
+            "status": "healthy",
+            "diseases": "empty"
+        },
+        {
+            "id": "ah8",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Apple%20leaf/ripe-red-apple-with-green-leaf-isolated-on-white-picture-id184640296%3Fs%3D612x612.jpg",
+            "plant": "apple",
+            "status": "healthy",
+            "diseases": "empty"
+        },
+        {
+            "id": "ah9",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Apple%20leaf/stock-photo-green-apple-leaf-isolated-on-white-with-clipping-path-195130079.jpg",
+            "plant": "apple",
+            "status": "healthy",
+            "diseases": "empty"
+        },
+        {
+            "id": "ah10",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Apple%20leaf/CRABAPPLE_leaves.jpg",
+            "plant": "apple",
+            "status": "healthy",
+            "diseases": "empty"
+        }
+   ],
+   "apples_scab": [
+        {
+            "id": "as1",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Apple%20Scab%20Leaf/applescabmalus1.jpg",
+            "plant": "apple",
+            "status": "unhealthy",
+            "diseases": "scab"
+        },    
+        {
+            "id": "as2",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Apple%20Scab%20Leaf/Apple-Scab-image-01.jpg",
+            "plant": "apple",
+            "status": "unhealthy",
+            "diseases": "scab"
+        },    
+        {
+            "id": "as3",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Apple%20Scab%20Leaf/Apple-Scab-image-02.jpg",
+            "plant": "apple",
+            "status": "unhealthy",
+            "diseases": "scab"
+        },    
+        {
+            "id": "as4",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Apple%20Scab%20Leaf/Apple_Scab163.jpg",
+            "plant": "apple",
+            "status": "unhealthy",
+            "diseases": "scab"
+        },    
+        {
+            "id": "as5",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Apple%20Scab%20Leaf/Apple-Scab_1_1.jpg",
+            "plant": "apple",
+            "status": "unhealthy",
+            "diseases": "scab"
+        },    
+        {
+            "id": "as6",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Apple%20Scab%20Leaf/Apple-Scab-Mulrooney.jpg",
+            "plant": "apple",
+            "status": "unhealthy",
+            "diseases": "scab"
+        },    
+        {
+            "id": "as7",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Apple%20Scab%20Leaf/01Apple-scab-2-Venturia-inaequalis.ashx%3Fw%3D600%26h%3D408%26bc%3Dffffff.jpg",
+            "plant": "apple",
+            "status": "unhealthy",
+            "diseases": "scab"
+        },    
+        {
+            "id": "as8",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Apple%20Scab%20Leaf/500_F_125294801_k0A2teQwKxZfTV1pcaerZFf9Th04F04q.jpg",
+            "plant": "apple",
+            "status": "unhealthy",
+            "diseases": "scab"
+        },    
+        {
+            "id": "as9",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Apple%20Scab%20Leaf/AppleScab14.jpg",
+            "plant": "apple",
+            "status": "unhealthy",
+            "diseases": "scab"
+        },    
+        {
+            "id": "as10",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Apple%20Scab%20Leaf/AppleScab03.jpg",
+            "plant": "apple",
+            "status": "unhealthy",
+            "diseases": "scab"
+        } 
+   ],
+   "apples_rust": [
+        {
+            "id": "ar1",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Apple%20rust%20leaf/apples_rusts-cedar-apple_01_zoom.jpg",
+            "plant": "apple",
+            "status": "unhealthy",
+            "diseases": "rust"
+        }, 
+        {
+            "id": "ar2",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Apple%20rust%20leaf/aecia-on-apple-e1368285975597.jpeg.jpg",
+            "plant": "apple",
+            "status": "unhealthy",
+            "diseases": "rust"
+        }, 
+        {
+            "id": "ar3",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Apple%20rust%20leaf/2-Rust-induced-leaf-scorch-1fpa6c3.jpg",
+            "plant": "apple",
+            "status": "unhealthy",
+            "diseases": "rust"
+        }, 
+        {
+            "id": "ar4",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Apple%20rust%20leaf/C0258424-Cedar_apple_rust_on_a_leaf-SPL.jpg",
+            "plant": "apple",
+            "status": "unhealthy",
+            "diseases": "rust"
+        }, 
+        {
+            "id": "ar5",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Apple%20rust%20leaf/B2750027-Cedar-apple_rust-SPL.jpg",
+            "plant": "apple",
+            "status": "unhealthy",
+            "diseases": "rust"
+        }, 
+        {
+            "id": "ar6",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Apple%20rust%20leaf/C11.11.jpg",
+            "plant": "apple",
+            "status": "unhealthy",
+            "diseases": "rust"
+        }, 
+        {
+            "id": "ar7",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Apple%20rust%20leaf/3-Rust-induced-leaf-scorch-1emjjbl.jpg",
+            "plant": "apple",
+            "status": "unhealthy",
+            "diseases": "rust"
+        }, 
+        {
+            "id": "ar8",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Apple%20rust%20leaf/CAR4.jpg",
+            "plant": "apple",
+            "status": "unhealthy",
+            "diseases": "rust"
+        }, 
+        {
+            "id": "ar9",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Apple%20rust%20leaf/quince5_600px.jpg",
+            "plant": "apple",
+            "status": "unhealthy",
+            "diseases": "rust"
+        }, 
+        {
+            "id": "ar10",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Apple%20rust%20leaf/frog-eye-leaf-spot-on-crabapple-grabowski.jpg",
+            "plant": "apple",
+            "status": "unhealthy",
+            "diseases": "rust"
+        }
+    ]
+}
