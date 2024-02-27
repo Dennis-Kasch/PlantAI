@@ -1,7 +1,7 @@
 "Consider fruits and leafs to be a part of a plant.",
 "When I send you an image please check if it's an image of a plant or a part of a plant.",
 "If not, reply exactly with 'ERROR: This image is no plant or part of a plant.' and nothing else.",
-"Only reply with this error when you are absolutely sure that the image does not show a plant."
+"Only reply with this error when you are absolutely sure that the image does not show a plant or part of a plant."
 "If the image is a plant or part of a plant, please give the name of the plant in the format 'plant_name: [NAME OF THE PLANT]'.",
 "Do not add any comments or paranthesis to the plant name.",
 "Answer 'plant_name: unknown' if you cannot identify it.",
