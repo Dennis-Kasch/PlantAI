@@ -183,4 +183,18 @@ public class AnalysisTest {
         runPlantTest(jsonPath, testArrayKey, "tomato");
     }
 
+    @Test
+    public void earlyBlightPotatoTest() {
+        String jsonPath = "./src/test/resources/analysis-testing/potato_tests.json";
+        String testArrayKey = "potato_early_blight";
+        runPlantTest(jsonPath, testArrayKey, "potato");
+    }
+
+    @Test
+    public void lateBlightPotatoTest() {
+        String jsonPath = "./src/test/resources/analysis-testing/potato_tests.json";
+        String testArrayKey = "potato_late_blight";
+        runPlantTest(jsonPath, testArrayKey, "potato");
+    }
+
 }

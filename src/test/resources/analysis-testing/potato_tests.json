@@ -1,0 +1,146 @@
+{
+    "potato_early_blight": [
+        {
+            "id": "pe1",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Potato%20leaf%20early%20blight/00009.jpg",
+            "plant": "potato",
+            "status": "unhealthy",
+            "diseases": "blight"
+        },
+        {
+            "id": "pe2",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Potato%20leaf%20early%20blight/0042241.jpg",
+            "plant": "potato",
+            "status": "unhealthy",
+            "diseases": "blight"
+        },
+        {
+            "id": "pe3",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Potato%20leaf%20early%20blight/0061.jpg",
+            "plant": "potato",
+            "status": "unhealthy",
+            "diseases": "blight"
+        },
+        {
+            "id": "pe4",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Potato%20leaf%20early%20blight/1024_x_576_-_alternaria_early_infection_symptoms_spreading.jpg",
+            "plant": "potato",
+            "status": "unhealthy",
+            "diseases": "blight"
+        },
+        {
+            "id": "pe5",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Potato%20leaf%20early%20blight/1024px-Phytophthora_infestans_potato_%2527Dor%25C3%25A9%2527%252C_aardappelziekte_Dor%25C3%25A9.jpg",
+            "plant": "potato",
+            "status": "unhealthy",
+            "diseases": "blight"
+        },
+        {
+            "id": "pe6",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Potato%20leaf%20early%20blight/1200px-Late_blight_on_potato_leaf_2.jpg",
+            "plant": "potato",
+            "status": "unhealthy",
+            "diseases": "blight"
+        },
+        {
+            "id": "pe7",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Potato%20leaf%20early%20blight/1421_0.jpeg%3Fitok%3DFMtmgePj.jpg",
+            "plant": "potato",
+            "status": "unhealthy",
+            "diseases": "blight"
+        },
+        {
+            "id": "pe8",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Potato%20leaf%20early%20blight/14321627273_58d893c3e2_potato-plant.jpg",
+            "plant": "potato",
+            "status": "unhealthy",
+            "diseases": "blight"
+        },
+        {
+            "id": "pe9",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Potato%20leaf%20early%20blight/1573852-Early-Blight-e1515624612559.jpg",
+            "plant": "potato",
+            "status": "unhealthy",
+            "diseases": "blight"
+        },
+        {
+            "id": "pe10",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Potato%20leaf%20early%20blight/15hrt15a1f1.jpg",
+            "plant": "potato",
+            "status": "unhealthy",
+            "diseases": "blight"
+        }
+    ],
+    "potato_late_blight": [
+        {
+            "id": "pl1",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Potato%20leaf%20late%20blight/14321627273_58d893c3e2_b.jpg",
+            "plant": "potato",
+            "status": "unhealthy",
+            "diseases": "blight"
+        },
+        {
+            "id": "pl2",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Potato%20leaf%20late%20blight/24064_1.jpg",
+            "plant": "potato",
+            "status": "unhealthy",
+            "diseases": "blight"
+        },
+        {
+            "id": "pl3",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Potato%20leaf%20late%20blight/24847793510_7859b46a3d.jpg",
+            "plant": "potato",
+            "status": "unhealthy",
+            "diseases": "blight"
+        },
+        {
+            "id": "pl4",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Potato%20leaf%20late%20blight/2619_600.jpg",
+            "plant": "potato",
+            "status": "unhealthy",
+            "diseases": "blight"
+        },
+        {
+            "id": "pl5",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Potato%20leaf%20late%20blight/3720946948_339251cc94_z.jpg",
+            "plant": "potato",
+            "status": "unhealthy",
+            "diseases": "blight"
+        },
+        {
+            "id": "pl6",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Potato%20leaf%20late%20blight/3782849713_398f3a1086_b.jpg",
+            "plant": "potato",
+            "status": "unhealthy",
+            "diseases": "blight"
+        },
+        {
+            "id": "pl7",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Potato%20leaf%20late%20blight/39-late-blight-mold.jpg",
+            "plant": "potato",
+            "status": "unhealthy",
+            "diseases": "blight"
+        },
+        {
+            "id": "pl8",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Potato%20leaf%20late%20blight/4-late-blight-cmyk-opt.jpeg.jpg",
+            "plant": "potato",
+            "status": "unhealthy",
+            "diseases": "blight"
+        },
+        {
+            "id": "pl9",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Potato%20leaf%20late%20blight/6a00d8341c4fe353ef011571354632970c-800wi.jpg",
+            "plant": "potato",
+            "status": "unhealthy",
+            "diseases": "blight"
+        },
+        {
+            "id": "pl10",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Potato%20leaf%20late%20blight/B2650062-Potato_late_blight-SPL.jpg",
+            "plant": "potato",
+            "status": "unhealthy",
+            "diseases": "blight"
+        }
+    ]
+}
