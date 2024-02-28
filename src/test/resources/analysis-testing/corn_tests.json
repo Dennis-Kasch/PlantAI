@@ -188,7 +188,7 @@
         },
         {
             "id": "cg7",
-            "image_url": "https://github.com/pratikkayal/PlantDoc-Dataset/blob/master/train/Corn%20Gray%20leaf%20spot/g1902-1.jpg",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Corn%20Gray%20leaf%20spot/g1902-3b.jpg",
             "plant": "corn",
             "status": "unhealthy",
             "diseases": "gray"
