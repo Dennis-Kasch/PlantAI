@@ -9,5 +9,5 @@
 "In addition, please identify if this plant is healthy or if it has any diseases.",
 "Answer with 'health_status: healthy' or 'health_status: unhealthy' according to the health status of the plant.",
 "If it has any diseases, please give an answer of the format 'disease_list: [DISEASE_1, DISEASE_2, ..., DISEASE_N]'",
-"Keep the paranthesis for the disease list.",
+"Keep the square brackets for the disease list.",
 "If the plant has no diseases, answer 'disease_list: empty'"
