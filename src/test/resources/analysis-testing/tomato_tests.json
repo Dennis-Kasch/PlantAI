@@ -1,0 +1,218 @@
+{
+    "tomato_healthy": [
+        {
+            "id": "th1",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Tomato%20leaf/CTG514794.jpg",
+            "plant": "tomato",
+            "status": "healthy",
+            "diseases": "empty"
+        },
+        {
+            "id": "th2",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Tomato%20leaf/depositphotos_7182856-stock-photo-tomato-leaf.jpg",
+            "plant": "tomato",
+            "status": "healthy",
+            "diseases": "empty"
+        },
+        {
+            "id": "th3",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Tomato%20leaf/single-a-green-leaf-of-tomato-picture-id496662675%3Fk%3D6%26m%3D496662675%26s%3D612x612%26w%3D0%26h%3D6zKfv022H_9cLQSIR_kpcOAlTeg1eIVtLBbc80PQA7Y%3D.jpg",
+            "plant": "tomato",
+            "status": "healthy",
+            "diseases": "empty"
+        },
+        {
+            "id": "th4",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Tomato%20leaf/stock-photo-tomato-leaf-isolated-on-white-background-580281301.jpg",
+            "plant": "tomato",
+            "status": "healthy",
+            "diseases": "empty"
+        },
+        {
+            "id": "th5",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Tomato%20leaf/tomato-leaf-26180166.jpg",
+            "plant": "tomato",
+            "status": "healthy",
+            "diseases": "empty"
+        },
+        {
+            "id": "th6",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Tomato%20leaf/tomato-leaf-isolated-white-34309524.jpg",
+            "plant": "tomato",
+            "status": "healthy",
+            "diseases": "empty"
+        },
+        {
+            "id": "th7",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Tomato%20leaf/tomato-vine-ripe-leaves-isolated-against-white-34863029.jpg",
+            "plant": "tomato",
+            "status": "healthy",
+            "diseases": "empty"
+        },
+        {
+            "id": "th8",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Tomato%20leaf/009-e1373768789869.jpg",
+            "plant": "tomato",
+            "status": "healthy",
+            "diseases": "empty"
+        },
+        {
+            "id": "th9",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Tomato%20leaf/Leaves-of-Tomato.jpg",
+            "plant": "tomato",
+            "status": "healthy",
+            "diseases": "empty"
+        },
+        {
+            "id": "th10",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Tomato%20leaf/2013-08-20-04.jpg",
+            "plant": "tomato",
+            "status": "healthy",
+            "diseases": "empty"
+        }
+    ],
+    "tomato_yellow_virus": [
+        {
+            "id": "ty1",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Tomato%20leaf%20yellow%20virus/072.jpg",
+            "plant": "tomato",
+            "status": "unhealthy",
+            "diseases": "yellow"
+        },
+        {
+            "id": "ty2",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Tomato%20leaf%20yellow%20virus/1342017-162221-44540.jpg",
+            "plant": "tomato",
+            "status": "unhealthy",
+            "diseases": "yellow"
+        },
+        {
+            "id": "ty3",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Tomato%20leaf%20yellow%20virus/14456.img.jpg",
+            "plant": "tomato",
+            "status": "unhealthy",
+            "diseases": "yellow"
+        },
+        {
+            "id": "ty4",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Tomato%20leaf%20yellow%20virus/18071.img.jpg",
+            "plant": "tomato",
+            "status": "unhealthy",
+            "diseases": "yellow"
+        },
+        {
+            "id": "ty5",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Tomato%20leaf%20yellow%20virus/28619919393_7ef44acccc_b.jpg",
+            "plant": "tomato",
+            "status": "unhealthy",
+            "diseases": "yellow"
+        },
+        {
+            "id": "ty6",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Tomato%20leaf%20yellow%20virus/29994445671_b6914b44d0_b.jpg",
+            "plant": "tomato",
+            "status": "unhealthy",
+            "diseases": "yellow"
+        },
+        {
+            "id": "ty7",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Tomato%20leaf%20yellow%20virus/8e60bae9f613f360403943f108a03083.jpg",
+            "plant": "tomato",
+            "status": "unhealthy",
+            "diseases": "yellow"
+        },
+        {
+            "id": "ty8",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Tomato%20leaf%20yellow%20virus/DSC02006.JPG.jpg",
+            "plant": "tomato",
+            "status": "unhealthy",
+            "diseases": "yellow"
+        },
+        {
+            "id": "ty9",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Tomato%20leaf%20yellow%20virus/DSC02007.JPG.jpg",
+            "plant": "tomato",
+            "status": "unhealthy",
+            "diseases": "yellow"
+        },
+        {
+            "id": "ty10",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Tomato%20leaf%20yellow%20virus/TYLCV4.jpg",
+            "plant": "tomato",
+            "status": "unhealthy",
+            "diseases": "yellow"
+        }
+    ],
+    "tomato_mosaic_virus": [
+        {
+            "id": "tm1",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Tomato%20leaf%20mosaic%20virus/1422_0.jpeg.jpg",
+            "plant": "tomato",
+            "status": "unhealthy",
+            "diseases": "mosaic"
+        },
+        {
+            "id": "tm2",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Tomato%20leaf%20mosaic%20virus/3-tomato-mosaic-virus_web.jpg",
+            "plant": "tomato",
+            "status": "unhealthy",
+            "diseases": "mosaic"
+        },
+        {
+            "id": "tm3",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Tomato%20leaf%20mosaic%20virus/51196-004-61703A1B.jpg",
+            "plant": "tomato",
+            "status": "unhealthy",
+            "diseases": "mosaic"
+        },
+        {
+            "id": "tm4",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Tomato%20leaf%20mosaic%20virus/TMV-3.jpg",
+            "plant": "tomato",
+            "status": "unhealthy",
+            "diseases": "mosaic"
+        },
+        {
+            "id": "tm5",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Tomato%20leaf%20mosaic%20virus/Tomato%252Bmosaic%252Bvirus.jpg",
+            "plant": "tomato",
+            "status": "unhealthy",
+            "diseases": "mosaic"
+        },
+        {
+            "id": "tm6",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Tomato%20leaf%20mosaic%20virus/ab40cce958c60d8b6e0ec2e4fdb8f526.jpg",
+            "plant": "tomato",
+            "status": "unhealthy",
+            "diseases": "mosaic"
+        },
+        {
+            "id": "tm7",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Tomato%20leaf%20mosaic%20virus/dahliaviralsymptoms2lowresjpg.jpg",
+            "plant": "tomato",
+            "status": "unhealthy",
+            "diseases": "mosaic"
+        },
+        {
+            "id": "tm8",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Tomato%20leaf%20mosaic%20virus/mosaic_virus_tomato.jpg",
+            "plant": "tomato",
+            "status": "unhealthy",
+            "diseases": "mosaic"
+        },
+        {
+            "id": "tm9",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Tomato%20leaf%20mosaic%20virus/mosiac-virus3.jpg",
+            "plant": "tomato",
+            "status": "unhealthy",
+            "diseases": "mosaic"
+        },
+        {
+            "id": "tm10",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Tomato%20leaf%20mosaic%20virus/tomato-fern-leaf-a-symptom-of-tmv-cmv-or-pepmv-virus-on-tomato-plants-h6ey8w.jpg",
+            "plant": "tomato",
+            "status": "unhealthy",
+            "diseases": "mosaic"
+        }
+    ]
+}

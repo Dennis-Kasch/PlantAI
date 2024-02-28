@@ -89,7 +89,7 @@ public class AnalysisTest {
             System.out.println("plant id:"+id);
             // get analysis from chatgpt
             imageUrl = appleObject.getString("image_url");
-            gptAnswer = connection.getAnswerByUrl(systemMessage, "The image shows a "+plantName+" plant.", imageUrl, "300");
+            gptAnswer = connection.getAnswerByUrl(systemMessage, "The image shows a "+plantName+" plant or leaves of it.", imageUrl, "300");
             // check if analysis matches expected values
             String expectedPlant = appleObject.getString("plant");
             String expectedStatus = appleObject.getString("status");
@@ -160,6 +160,27 @@ public class AnalysisTest {
         String jsonPath = "./src/test/resources/analysis-testing/corn_tests.json";
         String testArrayKey = "corn_gray";
         runPlantTest(jsonPath, testArrayKey, "corn");
+    }
+
+    @Test
+    public void healthyTomatoTest() {
+        String jsonPath = "./src/test/resources/analysis-testing/tomato_tests.json";
+        String testArrayKey = "tomato_healthy";
+        runPlantTest(jsonPath, testArrayKey, "tomato");
+    }
+
+    @Test
+    public void yellowVirusTomatoTest() {
+        String jsonPath = "./src/test/resources/analysis-testing/tomato_tests.json";
+        String testArrayKey = "tomato_yellow_virus";
+        runPlantTest(jsonPath, testArrayKey, "tomato");
+    }
+
+    @Test
+    public void mosaicVirusTomatoTest() {
+        String jsonPath = "./src/test/resources/analysis-testing/tomato_tests.json";
+        String testArrayKey = "tomato_mosaic_virus";
+        runPlantTest(jsonPath, testArrayKey, "tomato");
     }
 
 }
