@@ -22,13 +22,13 @@ import com.cloudinary.utils.ObjectUtils;
 import io.github.cdimascio.dotenv.Dotenv;
 
 @RestController
-public class SimpleController {
+public class AnalysisController {
 
     private ChatGPTConnection connection;
     private Cloudinary cloudinary;
     private Dotenv dotenv;
 
-    public SimpleController() {
+    public AnalysisController() {
         // Create connection to chatGPT
         dotenv = Dotenv.configure().load();
         this.cloudinary = new Cloudinary(ObjectUtils.asMap(
@@ -50,13 +50,6 @@ public class SimpleController {
             e.printStackTrace();
             return "Failed to upload image";
         }
-    }
-
-    @GetMapping("/")
-    public String base() {
-        String answer = "Server is running";
-        System.out.println(answer);
-        return answer;
     }
 
     private String uploadImage(MultipartFile image) {
