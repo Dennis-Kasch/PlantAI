@@ -24,13 +24,13 @@ import io.github.cdimascio.dotenv.Dotenv;
 @RestController
 public class AnalysisController {
 
-    private ChatGPTConnection connection;
+    private ConnectionHandler connection;
     private Dotenv dotenv;
 
     public AnalysisController() {
         // Create connection to chatGPT
         dotenv = Dotenv.configure().load();
-        this.connection = new ChatGPTConnection(dotenv.get("GPT_API_KEY"), dotenv.get("VISUAL_MODEL"));
+        this.connection = new ConnectionHandler(dotenv.get("GPT_API_KEY"), dotenv.get("VISUAL_MODEL"));
         String keyResponse = this.connection.checkApiKey();
         if (keyResponse.contains("ERROR")) throw new RuntimeException("Shutting down backend due to runtime exception.");
         else System.out.println(keyResponse);
