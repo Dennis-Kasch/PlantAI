@@ -89,11 +89,6 @@ public class SimpleController {
         }
     }
 
-    @GetMapping("/checkApiKey")
-    public String checkApiKey() {
-        return null;
-    }
-
     private String readPromptFromFile(String filePath) {
         try {
             List<String> allLines = Files.readAllLines(Paths.get(filePath));
