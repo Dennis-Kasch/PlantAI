@@ -27,13 +27,13 @@ import java.util.Map;
 
 import javax.imageio.ImageIO;
 
-public class ChatGPTConnection {
+public class ConnectionHandler {
 
     private String apiKey, visualModel;
     private Cloudinary cloudinary;
     private Dotenv dotenv;
 
-    public ChatGPTConnection(String apiKey, String visualModel) {
+    public ConnectionHandler(String apiKey, String visualModel) {
         dotenv = Dotenv.configure().load();
         this.apiKey = apiKey;
         this.visualModel = visualModel;
