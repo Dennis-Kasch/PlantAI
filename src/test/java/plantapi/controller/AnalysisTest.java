@@ -33,7 +33,7 @@ import io.github.cdimascio.dotenv.Dotenv;
 public class AnalysisTest {
 
     private static Dotenv dotenv;
-    private static ChatGPTConnection connection;
+    private static ConnectionHandler connection;
     private static String systemMessage;
     private List<JSONObject> getJsonArray(String jsonPath, String key) {
         try {
@@ -116,7 +116,7 @@ public class AnalysisTest {
     @BeforeAll
     public static void initializeConnector() {
         dotenv = Dotenv.configure().load();
-        connection = new ChatGPTConnection(dotenv.get("GPT_API_KEY"), dotenv.get("VISUAL_MODEL"));
+        connection = new ConnectionHandler(dotenv.get("GPT_API_KEY"), dotenv.get("VISUAL_MODEL"));
         systemMessage = readPromptFromFile("./src/test/resources/analysisPrompt.txt");
     }
 
