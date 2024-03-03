@@ -2,25 +2,100 @@ package plantapi.controller;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import io.github.cdimascio.dotenv.Dotenv;
+
+import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.Map;
+
+import javax.imageio.ImageIO;
 
 public class ChatGPTConnection {
 
     private String apiKey, visualModel;
+    private Cloudinary cloudinary;
+    private Dotenv dotenv;
 
     public ChatGPTConnection(String apiKey, String visualModel) {
+        dotenv = Dotenv.configure().load();
         this.apiKey = apiKey;
         this.visualModel = visualModel;
+                this.cloudinary = new Cloudinary(ObjectUtils.asMap(
+            "cloud_name", dotenv.get("CLOUDINARY_NAME"),
+            "api_key", dotenv.get("CLOUDINARY_KEY"),
+            "api_secret", dotenv.get("CLOUDINARY_SECRET")));
+
     }
+
+    public String uploadImage(MultipartFile image) {
+        try {
+            if (image.isEmpty()) {
+                return "Error: File is empty";
+            }
+            else {
+                BufferedImage bufferedImage = ImageIO.read(image.getInputStream());
+                int width = bufferedImage.getWidth();
+                int height = bufferedImage.getHeight();
+                if (width > Integer.parseInt(dotenv.get("IMAGE_MAX_WIDTH")) || height > Integer.parseInt(dotenv.get("IMAGE_MAX_HEIGHT"))) {
+                    return "Error: Image must be 800x600 pixels or smaller";
+                }
+                else {
+                    String fileName = image.getOriginalFilename();
+                    Path filePath = Paths.get(dotenv.get("LOCAL_IMAGE_DIR"), fileName);
+                    System.out.println("Saving image to " + filePath.toString());
+                    image.transferTo(filePath.toFile());
+                    System.out.println("Uploading image to filehoster");
+                    String fileHosterUrl = uploadToImageHoster(filePath.toFile());
+                    String answer = "Image uploaded successfully. Hosted at: " + fileHosterUrl;
+                    System.out.println(answer);
+                    return answer;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Error: Failed to upload image";
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    public String uploadToImageHoster(File file) {
+        try {
+            Map<String, Object> uploadResult = cloudinary.uploader().upload(file, ObjectUtils.emptyMap());
+            return (String) uploadResult.get("url");
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "Failed to upload image";
+        }
+    }
+
+    public String readPromptFromFile(String filePath) {
+        try {
+            List<String> allLines = Files.readAllLines(Paths.get(filePath));
+            String analysisPrompt = String.join("\n", allLines);
+            return analysisPrompt;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 
     private String createUrlRequestBody(String systemText, String userText, String imageUrl, String tokenLimit) {
 
