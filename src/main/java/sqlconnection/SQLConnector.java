@@ -3,6 +3,8 @@ package sqlconnection;
 import java.io.InputStream;
 import java.sql.*;
 import java.util.Properties;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class SQLConnector {
 
@@ -15,8 +17,6 @@ public class SQLConnector {
                 System.out.println("Sorry, unable to find properties");
                 return;
             }
-
-            // Load a properties file from class path, inside static method
             props.load(input);
         } catch (Exception e) {
             e.printStackTrace();
@@ -76,9 +76,9 @@ public class SQLConnector {
     }
 
     public void createTestTables() throws SQLException {
-        insertIntoImages("testUser","testURL","imageName",
+        addImage("testUser","testURL","imageName",
                 "exampleHash","This is a test photo.");
-        insertIntoUsers("testUser", "First", "Last",
+        createUser("testUser", "First", "Last",
                 "abc@def.com","testPassword");
 
     }
@@ -93,33 +93,69 @@ public class SQLConnector {
         }
     }
 
-    public void insertIntoImages(String username, String imageUrl, String imageName,
-                                 String imageHash, String analysisResult) throws SQLException {
-        String query = " insert into Images (_username, imageUrl, imageName, imageHash, " +
-                "analysisResult)"
-                + " values (?, ?, ?, ?, ?)";
-        PreparedStatement ps = connection.prepareStatement(query);
-        ps.setString (1, username);
-        ps.setString (2, imageUrl);
-        ps.setString (3, imageName);
-        ps.setString (4, imageHash);
-        ps.setString (5, analysisResult);
-        ps.execute();
+    public boolean addImage(String username, String imageUrl, String imageName,
+    String imageHash, String analysisResult) throws SQLException {
+        // First, check if an image with the same hash already exists
+        String checkQuery = "SELECT COUNT(*) FROM Images WHERE imageHash = ?";
+        try (PreparedStatement checkStmt = connection.prepareStatement(checkQuery)) {
+            checkStmt.setString(1, imageHash);
+            ResultSet rs = checkStmt.executeQuery();
+            if (rs.next() && rs.getInt(1) > 0) {
+                return false;
+            }
+        } 
+        catch (SQLException e) {
+            throw e;
+        }
+
+        // If no image exists with the given hash, proceed to insert the new image
+        String insertQuery = "INSERT INTO Images (_username, imageUrl, imageName, imageHash, analysisResult)"
+        + " VALUES (?, ?, ?, ?, ?)";
+        try (PreparedStatement insertStmt = connection.prepareStatement(insertQuery)) {
+        insertStmt.setString(1, username);
+        insertStmt.setString(2, imageUrl);
+        insertStmt.setString(3, imageName);
+        insertStmt.setString(4, imageHash);
+        insertStmt.setString(5, analysisResult);
+
+        int rowsAffected = insertStmt.executeUpdate();
+        return rowsAffected > 0; // Returns true if the image was successfully added
+        } 
+        catch (SQLException e) {
+            throw e; 
+        }
     }
 
-    public void insertIntoUsers(String username, String firstName, String lastName,
-                                String email, String password) throws SQLException {
-        String query = " insert into Users (_username, firstName, lastName, email, " +
-                "password)"
-                + " values (?, ?, ?, ?, ?)";
-        PreparedStatement ps = connection.prepareStatement(query);
-        ps.setString (1, username);
-        ps.setString (2, firstName);
-        ps.setString (3, lastName);
-        ps.setString (4, email);
-        ps.setString (5, password);
-        ps.execute();
+    public boolean createUser(String username, String firstName, String lastName,
+    String email, String password) throws SQLException {
+        // Check if a user with the given username already exists
+        String checkQuery = "SELECT COUNT(*) FROM Users WHERE _username = ?";
+        try (PreparedStatement checkStmt = connection.prepareStatement(checkQuery)) {
+            checkStmt.setString(1, username);
+            ResultSet rs = checkStmt.executeQuery();
+            if (rs.next() && rs.getInt(1) > 0) {
+                return false;
+            }
+        } 
+        catch (SQLException e) {
+            throw e;
+        }
+        // If no user exists with the given username, proceed to insert the new user
+        String insertQuery = "INSERT INTO Users (_username, firstName, lastName, email, password)"+ " VALUES (?, ?, ?, ?, ?)";
+        try (PreparedStatement insertStmt = connection.prepareStatement(insertQuery)) {
+            insertStmt.setString(1, username);
+            insertStmt.setString(2, firstName);
+            insertStmt.setString(3, lastName);
+            insertStmt.setString(4, email);
+            insertStmt.setString(5, password);
+            int rowsAffected = insertStmt.executeUpdate();
+            return rowsAffected > 0;
+        } 
+        catch (SQLException e) {
+            throw e;
+        }
     }
+
 
     public Boolean checkItem(String table, String column, String item) throws SQLException {
         String query = " select * from "+ table +" where "+ column +" = '" + item +"'";
@@ -139,4 +175,39 @@ public class SQLConnector {
         ResultSet rs = ps.executeQuery();
         return rs;
     }
+
+    public boolean doesUserExist(String username) throws SQLException {
+        String query = "SELECT COUNT(*) FROM users WHERE _username = ?";
+        try (PreparedStatement ps = connection.prepareStatement(query)) {
+            ps.setString(1, username);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt(1) > 0;
+                }
+            }
+        }
+        return false;
+    }
+
+    public String getUserHistory(String username) throws SQLException {
+        String query = "SELECT * FROM images WHERE _username = ?";
+        JSONArray jsonArray = new JSONArray();
+        
+        try (PreparedStatement ps = connection.prepareStatement(query)) {
+            ps.setString(1, username);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    JSONObject record = new JSONObject();
+                    record.put("id", rs.getInt("id"));
+                    record.put("imageUrl", rs.getString("imageUrl"));
+                    record.put("imageName", rs.getString("imageName"));
+                    record.put("imageHash", rs.getString("imageHash"));
+                    record.put("analysisResult", rs.getString("analysisResult"));
+                    jsonArray.put(record);
+                }
+            }
+        }
+        return jsonArray.length() > 0 ? jsonArray.toString() : null;
+    }
+
 }
