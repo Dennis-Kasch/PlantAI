@@ -37,11 +37,12 @@ public class ConnectionHandler {
         dotenv = Dotenv.configure().load();
         this.apiKey = apiKey;
         this.visualModel = visualModel;
-                this.cloudinary = new Cloudinary(ObjectUtils.asMap(
-            "cloud_name", dotenv.get("CLOUDINARY_NAME"),
+        this.cloudinary = new Cloudinary(ObjectUtils.asMap(
+            "cloud_name",
+            dotenv.get("CLOUDINARY_NAME"),
             "api_key", dotenv.get("CLOUDINARY_KEY"),
-            "api_secret", dotenv.get("CLOUDINARY_SECRET")));
-
+            "api_secret", dotenv.get("CLOUDINARY_SECRET"))
+        );
     }
 
     public String uploadImage(MultipartFile image) {
