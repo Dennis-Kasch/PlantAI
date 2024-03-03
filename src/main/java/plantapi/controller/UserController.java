@@ -24,7 +24,7 @@ public class UserController {
         }
     }
 
-    @PostMapping("/user/")
+    @PostMapping("/user")
     public ResponseEntity<String> createUser(
             @RequestParam(value = "username") String username,
             @RequestParam(value = "firstname") String firstname,
@@ -55,14 +55,19 @@ public class UserController {
             @RequestParam(value = "imageHash") String imageHash,
             @RequestParam(value = "result") String result) {
         try {
-            boolean success = dbConnector.addImage(username, imageUrl, imageName, imageHash, result);
-            if (success) {
-                return ResponseEntity.ok("Image " + imageUrl + " has been added successfully.");
-            } else {
-                // Assuming failure is due to image already existing
-                return ResponseEntity.badRequest().body("Image  with hash " + imageHash + " already exists.");
+            if (dbConnector.doesUserExist(username)) {
+                boolean success = dbConnector.addImage(username, imageUrl, imageName, imageHash, result);
+                if (success) {
+                    return ResponseEntity.ok("Image " + imageUrl + " has been added successfully.");
+                } else {
+                    // Assuming failure is due to image already existing
+                    return ResponseEntity.badRequest().body("Image  with hash " + imageHash + " already exists.");
+                }
             }
-        } 
+            else {
+                return ResponseEntity.badRequest().body("User "+username+" does not exist.");
+            }
+        }
         catch (Exception e) {
             e.printStackTrace();
             // Respond with an Internal Server Error (500) status code
