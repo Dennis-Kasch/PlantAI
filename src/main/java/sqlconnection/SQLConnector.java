@@ -98,13 +98,17 @@ public class SQLConnector {
         String query = " insert into Images (_username, imageUrl, imageName, imageHash, " +
                 "analysisResult)"
                 + " values (?, ?, ?, ?, ?)";
-        PreparedStatement ps = connection.prepareStatement(query);
-        ps.setString (1, username);
-        ps.setString (2, imageUrl);
-        ps.setString (3, imageName);
-        ps.setString (4, imageHash);
-        ps.setString (5, analysisResult);
-        ps.execute();
+        try (PreparedStatement ps = connection.prepareStatement(query)) {
+            ps.setString(1, username);
+            ps.setString(2, imageUrl);
+            ps.setString(3, imageName);
+            ps.setString(4, imageHash);
+            ps.setString(5, analysisResult);
+
+            ps.execute();
+        } catch (SQLException e) {
+            System.out.println("Error: No image created");
+        }
     }
 
     public void insertIntoUsers(String username, String firstName, String lastName,
@@ -112,31 +116,38 @@ public class SQLConnector {
         String query = " insert into Users (_username, firstName, lastName, email, " +
                 "password)"
                 + " values (?, ?, ?, ?, ?)";
-        PreparedStatement ps = connection.prepareStatement(query);
-        ps.setString (1, username);
-        ps.setString (2, firstName);
-        ps.setString (3, lastName);
-        ps.setString (4, email);
-        ps.setString (5, password);
-        ps.execute();
+        try (PreparedStatement ps = connection.prepareStatement(query)) {
+            ps.setString(1, username);
+            ps.setString(2, firstName);
+            ps.setString(3, lastName);
+            ps.setString(4, email);
+            ps.setString(5, password);
+
+            ps.execute();
+        } catch (SQLException e){
+            System.out.println("Error: No user created");
+        }
     }
 
     public Boolean checkItem(String table, String column, String item) throws SQLException {
         String query = " select * from "+ table +" where "+ column +" = '" + item +"'";
-        PreparedStatement ps = connection.prepareStatement(query);
-        ResultSet rs = ps.executeQuery();
-        if (rs.next()){
-            return Boolean.TRUE;
-        }
-        else{
-            return Boolean.FALSE;
+        try (PreparedStatement ps = connection.prepareStatement(query)) {
+            ps.setString(1, item);
+            try (ResultSet rs = ps.executeQuery()) {
+                return rs.next();
+            } catch (SQLException e) {
+                return false;
+            }
         }
     }
 
     public ResultSet returnInfo(String table, String column, String restriction) throws SQLException {
         String query = " select * from " + table + " where "+ column +" = '" + restriction + "'";
-        PreparedStatement ps = connection.prepareStatement(query);
-        ResultSet rs = ps.executeQuery();
-        return rs;
+        try (PreparedStatement ps = connection.prepareStatement(query)) {
+            ps.setString(1, restriction);
+            return ps.executeQuery();
+        } catch (SQLException e) {
+            return null;
+        }
     }
 }
