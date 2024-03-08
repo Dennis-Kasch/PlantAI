@@ -44,6 +44,15 @@ public class SQLConnector {
 
         try (Statement statement = connection.createStatement()) {
             statement.executeUpdate(queryBuilder.toString());
+        } catch (SQLException e) {
+            System.out.println("Error: No table created");
+        }
+    }
+
+    public void deleteTable(String tableName) throws SQLException{
+        String query = "DROP TABLE IF EXISTS " + tableName;
+        try (Statement statement = connection.createStatement()) {
+            statement.executeUpdate(query);
         }
     }
 
