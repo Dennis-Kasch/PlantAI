@@ -247,4 +247,119 @@ public class SQLTest {
                 "First"));
         dbc.closeConnection();
     }
+
+    public void db0901() throws SQLException {
+        SQLConnector dbc = new SQLConnector();
+        dbc.deleteTable("Users");
+        dbc.deleteTable("Images");
+        dbc.createInitialTables();
+        dbc.insertIntoUsers("testUser", "First", "Last",
+                "abc@def.com", "testPassword");
+        System.out.println(dbc.checkItem("Users", "firstName", "First"));
+        dbc.closeConnection();
+    }
+
+    public void db0902() throws SQLException {
+        SQLConnector dbc = new SQLConnector();
+        dbc.deleteTable("Users");
+        dbc.deleteTable("Images");
+        dbc.createInitialTables();
+        dbc.insertIntoUsers("testUser", "First", "Last",
+                "abc@def.com", "testPassword");
+        dbc.insertIntoUsers("testUser2", "First", "Last",
+                "abc@def.com", "testPassword");
+        System.out.println(dbc.checkItem("Users", "firstName", "First"));
+        dbc.closeConnection();
+    }
+
+    public void db0903() throws SQLException {
+        SQLConnector dbc = new SQLConnector();
+        dbc.deleteTable("Users");
+        dbc.deleteTable("Images");
+        dbc.createInitialTables();
+        System.out.println(dbc.checkItem("Users", "firstName", "First"));
+        dbc.closeConnection();
+    }
+
+    public void db0904() throws SQLException {
+        SQLConnector dbc = new SQLConnector();
+        dbc.deleteTable("Users");
+        dbc.deleteTable("Images");
+        System.out.println(dbc.checkItem("Users", "firstName", "First"));
+        dbc.closeConnection();
+    }
+
+    public void db0905() throws SQLException {
+        SQLConnector dbc = new SQLConnector();
+        dbc.deleteTable("Users");
+        dbc.deleteTable("Images");
+        dbc.createInitialTables();
+        System.out.println(dbc.checkItem("Users", "first", "First"));
+        dbc.closeConnection();
+    }
+
+    public void db1001() throws SQLException {
+        SQLConnector dbc = new SQLConnector();
+        dbc.deleteTable("Users");
+        dbc.deleteTable("Images");
+        dbc.createInitialTables();
+        dbc.insertIntoUsers("testUser", "First", "Last",
+                "abc@def.com", "testPassword");
+        System.out.println(dbc.returnInfo("Users", "firstName", "First"));
+        dbc.closeConnection();
+    }
+
+    public void db1002() throws SQLException {
+        SQLConnector dbc = new SQLConnector();
+        dbc.deleteTable("Users");
+        dbc.deleteTable("Images");
+        dbc.createInitialTables();
+        dbc.insertIntoUsers("testUser", "First", "Last",
+                "abc@def.com", "testPassword");
+        dbc.insertIntoUsers("testUser2", "First", "Last",
+                "abc@def.com", "testPassword");
+        System.out.println(dbc.returnInfo("Users", "firstName", "First"));
+        dbc.closeConnection();
+    }
+
+    public void db1003() throws SQLException {
+        SQLConnector dbc = new SQLConnector();
+        dbc.deleteTable("Users");
+        dbc.deleteTable("Images");
+        dbc.createInitialTables();
+        System.out.println(dbc.returnInfo("Users", "firstName", "First"));
+        dbc.closeConnection();
+    }
+
+    public void db1004() throws SQLException {
+        SQLConnector dbc = new SQLConnector();
+        dbc.deleteTable("Users");
+        dbc.deleteTable("Images");
+        System.out.println(dbc.returnInfo("Users", "firstName", "First"));
+        dbc.closeConnection();
+    }
+
+    public void db1005() throws SQLException {
+        SQLConnector dbc = new SQLConnector();
+        dbc.deleteTable("Users");
+        dbc.deleteTable("Images");
+        dbc.createInitialTables();
+        System.out.println(dbc.returnInfo("Users", "first", "First"));
+        dbc.closeConnection();
+    }
+
+    public void db1101() throws SQLException {
+        SQLConnector dbc = new SQLConnector();
+        dbc.createInitialTables();
+        dbc.deleteTable("Images");
+        System.out.println(dbc.checkTableExists("Images"));
+        dbc.closeConnection();
+    }
+
+    public void db1102() throws SQLException {
+        SQLConnector dbc = new SQLConnector();
+        dbc.deleteTable("RandomTableThatDoesNotExist");
+        System.out.println(dbc.checkTableExists("RandomTableThatDoesNotExist"));
+        dbc.closeConnection();
+    }
 }
