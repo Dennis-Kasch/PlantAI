@@ -3,11 +3,24 @@ package sqlconnection;
 import java.io.InputStream;
 import java.sql.*;
 import java.util.Properties;
-
+/**
+ * The SQLConnector class provides methods for connecting to a database, executing SQL queries,
+ * and managing tables related to image and user information.
+ * <p>
+ * This class utilizes a properties file (db.properties) for database configuration.
+ *
+ * @author Daniel Hahn
+ */
 public class SQLConnector {
 
     private Connection connection;
 
+    /**
+     * Constructs a new SQLConnector object, establishing a connection to the database
+     * using the properties specified in the "db.properties" file.
+     *
+     * @throws SQLException If a database access error occurs or the URL is null
+     */
     public SQLConnector() throws SQLException {
         Properties props = new Properties();
         try (InputStream input = getClass().getClassLoader().getResourceAsStream("db.properties")) {
@@ -29,12 +42,27 @@ public class SQLConnector {
         this.connection = DriverManager.getConnection(connectionUrl, user, password);
     }
 
+    /**
+     * Checks if a table with the specified name exists in the connected database.
+     *
+     * @param tableName The name of the table to check for existence.
+     * @return {@code true} if the table exists, {@code false} otherwise.
+     * @throws SQLException If a database access error occurs or an error with the SQL operation.
+     */
     public Boolean checkTableExists(String tableName) throws SQLException {
         DatabaseMetaData dmd = connection.getMetaData();
         ResultSet rs = dmd.getTables(null,null,tableName, null);
         return  rs.next();
     }
 
+    /**
+     * Creates a new table in the connected database with the specified name and column definitions.
+     *
+     * @param tableName          The name of the table to be created.
+     * @param columnDefinitions  An array of strings representing the column definitions for the new table.
+     *                           Each string should define a column along with its data type and constraints.
+     * @throws SQLException       If a database access error occurs or an error with the SQL operation.
+     */
     public void createTable(String tableName, String[] columnDefinitions) throws SQLException {
         StringBuilder queryBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ")
                 .append(tableName)
@@ -49,6 +77,12 @@ public class SQLConnector {
         }
     }
 
+    /**
+     * Deletes a table from the connected database if it exists.
+     *
+     * @param tableName The name of the table to be deleted.
+     * @throws SQLException If a database access error occurs or an error with the SQL operation.
+     */
     public void deleteTable(String tableName) throws SQLException{
         String query = "DROP TABLE IF EXISTS " + tableName;
         try (Statement statement = connection.createStatement()) {
@@ -56,6 +90,13 @@ public class SQLConnector {
         }
     }
 
+    /**
+     * Creates initial tables in the connected database if they do not already exist.
+     * The method checks for the existence of 'Images' and 'Users' tables. If either table does not exist,
+     * it creates both tables with predefined column definitions.
+     *
+     * @throws SQLException If a database access error occurs or an error with the SQL operation.
+     */
     public void createInitialTables() throws SQLException {
         Boolean imagesTable = checkTableExists("Images");
         Boolean usersTable = checkTableExists("Users");
@@ -84,6 +125,12 @@ public class SQLConnector {
         }
     }
 
+    /**
+     * Inserts test data into the existing 'Images' and 'Users' tables in the connected database.
+     * This method is intended for testing purposes. It inserts a test record into both tables assuming they already exist.
+     *
+     * @throws SQLException If a database access error occurs or an error with the SQL operation.
+     */
     public void createTestTables() throws SQLException {
         insertIntoImages("testUser","testURL","imageName",
                 "exampleHash","This is a test photo.");
@@ -92,6 +139,11 @@ public class SQLConnector {
 
     }
 
+    /**
+     * Closes the connection to the database if it is open.
+     * If the connection is not null and is not already closed, this method closes it.
+     * Any exceptions that occur during the closing process are printed to the standard error stream.
+     */
     public void closeConnection() {
         try {
             if (connection != null && !connection.isClosed()) {
@@ -102,6 +154,16 @@ public class SQLConnector {
         }
     }
 
+    /**
+     * Inserts a new record into the 'Images' table with the provided data.
+     *
+     * @param username       The username associated with the image.
+     * @param imageUrl       The URL of the image.
+     * @param imageName      The name of the image.
+     * @param imageHash      The hash value of the image.
+     * @param analysisResult The result of the image analysis.
+     * @throws SQLException  If a database access error occurs or an error with the SQL operation.
+     */
     public void insertIntoImages(String username, String imageUrl, String imageName,
                                  String imageHash, String analysisResult) throws SQLException {
         String query = " insert into Images (_username, imageUrl, imageName, imageHash, " +
@@ -120,6 +182,16 @@ public class SQLConnector {
         }
     }
 
+    /**
+     * Inserts a new record into the 'Users' table with the provided user data.
+     *
+     * @param username   The username of the user.
+     * @param firstName  The first name of the user.
+     * @param lastName   The last name of the user.
+     * @param email      The email address of the user.
+     * @param password   The password of the user.
+     * @throws SQLException If a database access error occurs or an error with the SQL operation.
+     */
     public void insertIntoUsers(String username, String firstName, String lastName,
                                 String email, String password) throws SQLException {
         String query = " insert into Users (_username, firstName, lastName, email, " +
@@ -138,6 +210,15 @@ public class SQLConnector {
         }
     }
 
+    /**
+     * Checks if a specific item exists in a specified column of a given table in the connected database.
+     *
+     * @param table  The name of the table to check.
+     * @param column The name of the column within the table.
+     * @param item   The value to check for in the specified column.
+     * @return {@code true} if the item exists in the specified column, {@code false} otherwise.
+     * @throws SQLException If a database access error occurs or an error with the SQL operation.
+     */
     public Boolean checkItem(String table, String column, String item) throws SQLException {
         String query = " select * from "+ table +" where "+ column +" = '" + item +"'";
         try (PreparedStatement ps = connection.prepareStatement(query)) {
@@ -150,6 +231,15 @@ public class SQLConnector {
         }
     }
 
+    /**
+     * Retrieves information from a specified column of a given table in the connected database based on a restriction.
+     *
+     * @param table       The name of the table to retrieve information from.
+     * @param column      The name of the column within the table.
+     * @param restriction The value used as a restriction in the WHERE clause.
+     * @return A ResultSet containing the retrieved information, or {@code null} if an error occurs.
+     * @throws SQLException If a database access error occurs or an error with the SQL operation.
+     */
     public ResultSet returnInfo(String table, String column, String restriction) throws SQLException {
         String query = " select * from " + table + " where "+ column +" = '" + restriction + "'";
         try (PreparedStatement ps = connection.prepareStatement(query)) {
