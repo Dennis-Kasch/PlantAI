@@ -141,6 +141,7 @@ public class ConnectionHandler {
         contentArray.put(user);
         body.put("messages", contentArray);
         body.put("max_tokens", tokenLimit);
+        body.put("temperature", 0.0);
 
         return body.toString();
     }
