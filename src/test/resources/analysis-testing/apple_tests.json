@@ -69,6 +69,76 @@
             "plant": "apple",
             "status": "healthy",
             "diseases": "empty"
+        },
+        {
+            "id": "ah11",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Apple%20leaf/20130519yellowingappleleaves.jpg",
+            "plant": "apple",
+            "status": "healthy",
+            "diseases": "empty"
+        },
+        {
+            "id": "ah12",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Apple%20leaf/CRABAPPLE2_leaves.jpg",
+            "plant": "apple",
+            "status": "healthy",
+            "diseases": "empty"
+        },
+        {
+            "id": "ah13",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Apple%20leaf/Dwarf-Apple-Pink-Lady-2545.jpeg.jpg",
+            "plant": "apple",
+            "status": "healthy",
+            "diseases": "empty"
+        },
+        {
+            "id": "ah14",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Apple%20leaf/apple-tree-leaves.jpg",
+            "plant": "apple",
+            "status": "healthy",
+            "diseases": "empty"
+        },
+        {
+            "id": "ah15",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Apple%20leaf/appleleaf%2Btrial%2B007.JPG.jpg",
+            "plant": "apple",
+            "status": "healthy",
+            "diseases": "empty"
+        },
+        {
+            "id": "ah16",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Apple%20leaf/autumn-red-apple-leaves.jpg",
+            "plant": "apple",
+            "status": "healthy",
+            "diseases": "empty"
+        },
+        {
+            "id": "ah17",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Apple%20leaf/bright-red-crab-apple-fruit-malus-john-downie-on-the-tree-in-late-KH3WRX.jpg",
+            "plant": "apple",
+            "status": "healthy",
+            "diseases": "empty"
+        },
+        {
+            "id": "ah18",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Apple%20leaf/crab_apple_03_leaves.jpg",
+            "plant": "apple",
+            "status": "healthy",
+            "diseases": "empty"
+        },
+        {
+            "id": "ah19",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Apple%20leaf/flat%2C1000x1000%2C075%2Cf.u2.jpg",
+            "plant": "apple",
+            "status": "healthy",
+            "diseases": "empty"
+        },
+        {
+            "id": "ah20",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Apple%20leaf/green-leaf-apple-tree-14300049.jpg",
+            "plant": "apple",
+            "status": "healthy",
+            "diseases": "empty"
         }
    ],
    "apples_scab": [

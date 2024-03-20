@@ -69,6 +69,41 @@
             "plant": "tomato",
             "status": "healthy",
             "diseases": "empty"
+        },
+        {
+            "id": "th11",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Tomato%20leaf/1686.jpg",
+            "plant": "tomato",
+            "status": "healthy",
+            "diseases": "empty"
+        },
+        {
+            "id": "th12",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Tomato%20leaf/1688.jpg",
+            "plant": "tomato",
+            "status": "healthy",
+            "diseases": "empty"
+        },
+        {
+            "id": "th13",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Tomato%20leaf/20130609_151253_zpsc7d93f62.jpg",
+            "plant": "tomato",
+            "status": "healthy",
+            "diseases": "empty"
+        },
+        {
+            "id": "th14",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Tomato%20leaf/20140818-tomato-sauce-vicky-wasik-1.jpg",
+            "plant": "tomato",
+            "status": "healthy",
+            "diseases": "empty"
+        },
+        {
+            "id": "th15",
+            "image_url": "https://raw.githubusercontent.com/pratikkayal/PlantDoc-Dataset/master/train/Tomato%20leaf/CTG514794.jpg",
+            "plant": "tomato",
+            "status": "healthy",
+            "diseases": "empty"
         }
     ],
     "tomato_yellow_virus": [
